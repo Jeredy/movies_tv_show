@@ -28,7 +28,7 @@ export const IconContainer = styled.div`
   left: 190px;
   top: 100px;
   z-index: 9999;
-  box-shadow: 0 0.1rem 0.2rem #3b4ba244;
+  box-shadow: 0 -0.1rem 0.2rem #3b4ba244;
   transition: 0.1s ease-in-out;
   transform: rotate(180deg);
 

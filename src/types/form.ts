@@ -1,5 +1,12 @@
 export type FormValues = {
-	email?: string;
-	password?: string;
-	confirmPassword?: string;
+  name?: string;
+  image?: string;
+  video?: string;
+  duration?: string;
+  year?: string;
+  category?: string;
+  description?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
 };

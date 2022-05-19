@@ -6,11 +6,14 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 350px;
   max-height: 350px;
   width: 100%;
   align-items: flex-start;
   justify-content: flex-start;
-  background-image: url(https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/5A6949E15616A514884473E12153B1BDD4F595B97D2DEFD0F81C8CF805692D04/badging?width=800&aspectRatio=1.78&format=jpeg&label=disneyplusoriginal);
+  background-image: url(https://i.pinimg.com/originals/3b/97/b0/3b97b0ab8ef4d7de00ee4a1852b32d8a.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
   z-index: 888;
 
@@ -27,7 +30,7 @@ export const Container = styled.div`
       rgba(2, 0, 36, 1) 1%,
       rgba(20, 20, 71, 0.7) 30%,
       rgba(90, 122, 164, 0.21) 63%,
-      rgba(15, 10, 92, 0.15) 99%
+      rgba(15, 10, 92, 0) 99%
     );
     z-index: 1;
   }
@@ -46,7 +49,7 @@ export const TopMenu = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.5rem 1.6rem;
+  padding: 0.8rem 1.6rem;
   z-index: 888;
 
   p {

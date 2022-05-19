@@ -2,9 +2,10 @@ import React from "react";
 
 import Menu from "../../components/menu/menu.components";
 import { Route, Routes } from "react-router-dom";
-import DashboardPage from "../movies/movies.page";
 
 import { Container, Page, IconContainer, Icon } from "./home.styles";
+import TVShowPage from "../tv_show/tv_show.page";
+import MoviesIndex from "../movies";
 
 const AnotherPage = () => {
   return (
@@ -35,7 +36,8 @@ const HomePage: React.FC = () => {
       </IconContainer>
       <Page>
         <Routes>
-          <Route path="/" element={<DashboardPage />} />
+          <Route path="/*" element={<MoviesIndex />} />
+          <Route path="tv_show" element={<TVShowPage />} />
           <Route path="another-page" element={<AnotherPage />} />
         </Routes>
       </Page>

@@ -8,8 +8,6 @@ import { ReactComponent as TVShow } from "../assets/icons/tv_show.svg";
 import { ReactComponent as System } from "../assets/icons/system.svg";
 
 import { ReactComponent as Favorites } from "../assets/icons/favorites.svg";
-import { ReactComponent as Student } from "../assets/icons/user.svg";
-import { ReactComponent as Administrator } from "../assets/icons/verified_user.svg";
 
 import { ReactComponent as Settings } from "../assets/icons/settings@2.svg";
 import { ReactComponent as Language } from "../assets/icons/language.svg";
@@ -47,14 +45,6 @@ const FavoritesIcon = styled(Favorites)<MenuIconProps>`
   ${iconStyle}
 `;
 
-const StudentIcon = styled(Student)<MenuIconProps>`
-  ${iconStyle}
-`;
-
-const AdministratorIcon = styled(Administrator)<MenuIconProps>`
-  ${iconStyle}
-`;
-
 const SettingsIcon = styled(Settings)<MenuIconProps>`
   ${iconStyle}
 `;
@@ -80,7 +70,7 @@ export const menuData = [
     id: 2,
     title: "TV Series",
     data: [
-      { id: 20, title: "Tv Series", icon: TVShowIcon, link: "another-page" },
+      { id: 20, title: "Tv Series", icon: TVShowIcon, link: "tv_show" },
       {
         id: 21,
         title: "Add TV Series",
@@ -95,7 +85,7 @@ export const menuData = [
     data: [
       {
         id: 30,
-        title: "Aprovações",
+        title: "Favorites",
         icon: FavoritesIcon,
         link: "another-page",
       },

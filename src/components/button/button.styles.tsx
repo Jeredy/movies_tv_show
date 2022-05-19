@@ -1,12 +1,11 @@
 import styled from "styled-components";
+import { ww } from "../../styles/responsive";
 
 interface ContainerProps {
   isLoading: boolean;
   disabled: boolean;
 }
 
-// #1A6DFF
-// #C822FF
 /* eslint-disable */
 export const PrimaryContainer = styled.button<ContainerProps>`
   display: flex;
@@ -14,8 +13,7 @@ export const PrimaryContainer = styled.button<ContainerProps>`
   justify-content: center;
   width: 100%;
   background: linear-gradient(45deg, #dc8665, #eeb462);
-  min-height: 40px;
-  border: 1px solid #dedede;
+  height: 40px;
   box-shadow: 0 0.2rem 0.3rem #ffffff22;
 
   &:hover {
@@ -42,7 +40,7 @@ export const SecondaryContainer = styled.button<ContainerProps>`
   justify-content: center;
   width: 100%;
   background-color: #ffffff22;
-  min-height: 40px;
+  height: 38.5px;
   border: 1px solid #dedede;
   box-shadow: 0 0.2rem 0.3rem #ffffff22;
 
@@ -66,7 +64,8 @@ export const SecondaryContainer = styled.button<ContainerProps>`
 /* eslint-enable */
 
 export const Text = styled.p`
+  font-size: ${ww(9)}px;
   text-transform: capitalize;
   color: #fff;
-  font-weight: 400;
+  font-weight: 600;
 `;

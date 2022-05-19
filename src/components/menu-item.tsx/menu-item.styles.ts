@@ -42,13 +42,12 @@ export const ItemContainer = styled(Link)<MenuItemProps>`
   align-items: center;
   height: 40px;
   width: 100%;
-  background: ${({ selected }) =>
-    selected ? "rgba(73, 93, 204, 0.1)" : "#fff"};
+  background: ${({ selected }) => (selected ? "#eeb46233" : "#fff")};
   padding-left: 30px;
 
   &:hover {
     cursor: pointer;
-    background: rgba(73, 93, 204, 0.1);
+    background: #eeb46233;
   }
 `;
 

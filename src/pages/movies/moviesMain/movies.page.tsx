@@ -1,18 +1,14 @@
 import React from "react";
-import DetailsComponent from "../../components/details/details.component";
+import DetailsComponent from "../../../components/details/details.component";
+import ListPage from "../../list/list.component";
 
-import {
-  Container,
-  Title,
-  SubContainer,
-  FirstMenu,
-  SecondMenu,
-} from "./movies.styles";
+import { Container, SubContainer } from "./movies.styles";
 
 const DashboardPage: React.FC = () => {
   return (
     <Container>
       <DetailsComponent />
+      <ListPage />
       <SubContainer></SubContainer>
     </Container>
   );
