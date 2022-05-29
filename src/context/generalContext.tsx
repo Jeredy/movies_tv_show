@@ -83,9 +83,9 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
         value: editData,
       };
     case Types.SET_MOVIES:
-      const data = state.movies;
+      const moviesAfterAdded = state.movies;
 
-      data.map((element) => {
+      moviesAfterAdded.map((element) => {
         if (element.title === payload.category) {
           if (!element.data.find((movie) => movie.name === payload.name)) {
             return element.data.splice(0, 0, payload);
@@ -93,11 +93,46 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
         }
       });
 
-      const movies = data;
+      return {
+        ...state,
+        value: moviesAfterAdded,
+      };
+    case Types.DELETE_MOVIE:
+      const moviesAfterDeleted = state.movies;
+
+      moviesAfterDeleted.map((element) => {
+        if (element.title === payload.category) {
+          if (element.data.find((movie) => movie.id === payload.id)) {
+            return element.data.splice(
+              element.data.findIndex((movie) => movie.id === payload.id),
+              1
+            );
+          }
+        }
+      });
 
       return {
         ...state,
-        value: movies,
+        value: moviesAfterDeleted,
+      };
+    case Types.EDIT_MOVIE:
+      const moviesAfterEdited = state.movies;
+
+      moviesAfterEdited.map((element) => {
+        if (element.title === payload.category) {
+          if (element.data.find((movie) => movie.id === payload.id)) {
+            return element.data.splice(
+              element.data.findIndex((movie) => movie.id === payload.id),
+              1,
+              payload
+            );
+          }
+        }
+      });
+
+      return {
+        ...state,
+        value: moviesAfterEdited,
       };
     case Types.SET_CATEGORY:
       // const categories = (state.categories = payload);
@@ -178,6 +213,20 @@ const GeneralProvider = (props: LayoutProps) => {
     });
   };
 
+  const deleteMovie = (id: number, category: string) => {
+    dispatch({
+      type: Types.DELETE_MOVIE,
+      payload: { id, category },
+    });
+  };
+
+  const editMovie = (data: MoviesModel) => {
+    dispatch({
+      type: Types.EDIT_MOVIE,
+      payload: data,
+    });
+  };
+
   return (
     <GeneralContext.Provider
       value={{
@@ -199,6 +248,8 @@ const GeneralProvider = (props: LayoutProps) => {
         setEditData,
         setMovies,
         setCategory,
+        deleteMovie,
+        editMovie,
       }}
       {...props}
     />

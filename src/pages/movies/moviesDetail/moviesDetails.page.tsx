@@ -1,5 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import Alert from "../../../components/alert/alert.component";
 
 import Button from "../../../components/button/button.components";
 import { GeneralContext } from "../../../context/generalContext";
@@ -21,27 +22,38 @@ import {
 } from "./moviesDetails.styles";
 
 const MovieDetailPage: React.FC = () => {
-  const { movies, pageDetails, setPageDetails } =
+  const { movies, pageDetails, setPageDetails, deleteMovie, setEditData } =
     React.useContext(GeneralContext);
   const [data, setData] = React.useState<MoviesModel>();
   const [play, setPlay] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [showCautionAlert, setShowCautionAlert] = React.useState(false);
   const { id } = pageDetails;
-  console.log(id);
+
   React.useEffect(() => {
     movies.forEach((element) =>
       element.data.forEach((movie) => {
-        if (movie.id === 10) {
+        if (movie.id === id) {
           return setData(movie);
         }
       })
     );
   });
 
-  console.log(data);
+  const deleteData = (id: number, category: string) => {
+    setIsLoading(true);
+    deleteMovie?.(id, category);
+
+    console.log("movie:", id);
+    setTimeout(() => {
+      setPageDetails?.({});
+      setIsLoading(false);
+    }, 2500);
+  };
 
   return (
     <Container>
-      <SubContainer isPlaying={play}>
+      <SubContainer isPlaying={play} image={data?.image}>
         <CloseIconContainer
           className="closeButton"
           onClick={() => setPageDetails?.({})}
@@ -57,8 +69,23 @@ const MovieDetailPage: React.FC = () => {
           </Details>
           <About>{data?.description}</About>
           <ButtonContainer>
-            <Button title="Play" clickFunction={() => setPlay(true)} />
-            <Button title="Delete" customColor="#F24C4C" />
+            <Button
+              title="Play"
+              inverterColor
+              clickFunction={() => setPlay(true)}
+            />
+            <Button
+              title="Edit"
+              clickFunction={() => (
+                setEditData?.({ id: id }),
+                setPageDetails?.({ id: data?.id, route: "addMovie" })
+              )}
+            />
+            <Button
+              title="Delete"
+              customColor="#F24C4C"
+              clickFunction={() => setShowCautionAlert(true)}
+            />
           </ButtonContainer>
         </DetailContainer>
         <ReactPlayer
@@ -74,6 +101,16 @@ const MovieDetailPage: React.FC = () => {
           }}
         />
       </SubContainer>
+      {showCautionAlert && (
+        <Alert
+          text={`Você está prestes a deletar esse filme:${data?.name}`}
+          buttonText="Deletar"
+          clickFunction={() => setShowCautionAlert(false)}
+          cautionFunction={() => deleteData(data?.id!, data?.category!)}
+          isLoading={isLoading}
+          isCaution={true}
+        />
+      )}
     </Container>
   );
 };

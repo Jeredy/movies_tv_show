@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { w, ww } from "../../../styles/responsive";
 
 import { ReactComponent as Close } from "../../../assets/icons/close.svg";
+import { DetailContainerProps } from "../../../types/details";
 
 export const Container = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ export const Container = styled.div`
 
 export const SubContainer = styled.div<DetailContainerProps>`
   display: flex;
-  background-image: url(https://i.pinimg.com/originals/3b/97/b0/3b97b0ab8ef4d7de00ee4a1852b32d8a.jpg);
+  background-image: url(${({ image }) => image});
   background-size: cover;
   background-repeat: no-repeat;
   width: ${ww(450)}px;
@@ -68,9 +69,6 @@ export const SubContainer = styled.div<DetailContainerProps>`
   }
 `;
 
-export interface DetailContainerProps {
-  isPlaying: boolean;
-}
 export const DetailContainer = styled.div<DetailContainerProps>`
   z-index: 2;
 
@@ -116,11 +114,21 @@ export const Text = styled.p`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 370px;
   margin-top: 2rem;
 
   button {
-    width: 170px;
+    width: 370px;
+    margin-bottom: ${ww(11)}px;
+  }
+
+  & :nth-child(2) {
+    width: 175px;
+  }
+
+  & :nth-child(3) {
+    width: 175px;
   }
 `;
 

@@ -63,7 +63,8 @@ export const InputContainerSecondary = styled.div<
 export const Input = styled.input<InputContainerProps>`
   height: ${ww(23)}px;
   font-size: ${ww(8)}px;
-  width: ${({ hasChildren, width }) => (hasChildren ? width! - 55 : width)}px;
+  width: ${({ hasChildren, width }) =>
+    hasChildren ? width! - ww(31) : width! - ww(12)}px;
 `;
 
 export const IconContainer = styled.div<IconContainerProps>`

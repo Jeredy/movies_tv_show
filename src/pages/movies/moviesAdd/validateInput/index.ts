@@ -15,7 +15,7 @@ export const validate = (value: FormGeneralValues, setError: any) => {
         type: "required",
         message: "Informe um nome.",
       });
-    } else if (value.name?.length < 3 || value.name?.length > 20) {
+    } else if (value.name?.length < 3 || value.name?.length > 60) {
       passError.name = true;
       setError("name", {
         type: "required",
@@ -33,12 +33,13 @@ export const validate = (value: FormGeneralValues, setError: any) => {
       });
     } else if (
       value.image?.search(".png") === -1 &&
-      value.image?.search(".jpg") === -1
+      value.image?.search(".png") === -1 &&
+      value.image?.search(".jpeg") === -1
     ) {
       passError.image = true;
       setError("image", {
         type: "required",
-        message: "Inform uma image do tipo '.png' ou '.jpg'.",
+        message: "Inform uma image do tipo '.png' ou '.jpg' ou '.jpeg'.",
       });
     }
   }

@@ -27,7 +27,7 @@ export const TextAreaContainer = styled.div<
   border-radius: ${ww(3)}px;
   margin-bottom: ${ww(3)}px;
   border: ${({ isFocus, hasError }) =>
-    hasError ? "1px solid #f31" : isFocus ? "1px solid #C6C2DE" : "none"};
+    hasError ? "1px solid #f31" : isFocus ? "1px solid #A1E3D866" : "none"};
 `;
 
 export const TextArea = styled.textarea<InputContainerProps>`

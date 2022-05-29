@@ -23,19 +23,45 @@ import SelectComponent from "../../../components/select/select.component";
 import { ww } from "../../../styles/responsive";
 import { GeneralContext } from "../../../context/generalContext";
 import { validate } from "./validateInput";
+import { MoviesModel } from "../../../models/movies";
 
 const MoviesAdd: React.FC = () => {
   const [isLoading, setIsLoading] = React.useState(false);
-  const { setEditData, setPageDetails, setMovies, categories } =
-    React.useContext(GeneralContext);
+  const {
+    movies,
+    editData,
+    setEditData,
+    setPageDetails,
+    setMovies,
+    editMovie,
+    categories,
+  } = React.useContext(GeneralContext);
   const [selected, setSelected] = React.useState<string>();
+  const { id } = editData;
 
   const {
     register,
     getValues,
+    setValue,
     formState: { errors },
     setError,
   } = useForm<FormGeneralValues>();
+
+  React.useEffect(() => {
+    movies.forEach((element) =>
+      element.data.forEach((movie) => {
+        if (movie.id === id) {
+          setValue("name", movie.name);
+          setValue("image", movie.image);
+          setValue("video", movie.video);
+          setValue("duration", movie.duration);
+          setValue("year", movie.year);
+          setValue("description", movie.description);
+          return;
+        }
+      })
+    );
+  });
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -56,20 +82,22 @@ const MoviesAdd: React.FC = () => {
     try {
       setIsLoading(true);
 
+      const newData = {
+        id: id ?? Math.random() + 1,
+        name: getValues("name")!,
+        image: getValues("image")!,
+        video: getValues("video")!,
+        duration: getValues("duration")!,
+        year: getValues("year")!,
+        category: selected!,
+        description: getValues("description")!,
+      };
+
       setTimeout(() => {
         setIsLoading(false);
         setPageDetails?.({});
         setEditData?.({});
-        setMovies?.({
-          id: 12,
-          name: getValues("name")!,
-          image: getValues("image")!,
-          video: getValues("video")!,
-          duration: getValues("duration")!,
-          year: getValues("year")!,
-          category: selected!,
-          description: "string",
-        });
+        id ? editMovie?.(newData) : setMovies?.(newData);
       }, 2500);
     } catch (err) {
       setIsLoading(false);
@@ -94,6 +122,7 @@ const MoviesAdd: React.FC = () => {
               <InputComponent
                 register={register}
                 required={true}
+                value={getValues("name")}
                 onFocus={() => setError("name", { type: "", message: "" })}
                 name="name"
                 type="text"
@@ -104,6 +133,7 @@ const MoviesAdd: React.FC = () => {
               <InputComponent
                 register={register}
                 required={true}
+                value={getValues("image")}
                 onFocus={() => setError("image", { type: "", message: "" })}
                 name="image"
                 type="text"
@@ -114,6 +144,7 @@ const MoviesAdd: React.FC = () => {
               <InputComponent
                 register={register}
                 required={true}
+                value={getValues("video")}
                 onFocus={() => setError("video", { type: "", message: "" })}
                 name="video"
                 type="text"
@@ -124,6 +155,7 @@ const MoviesAdd: React.FC = () => {
               <InputComponent
                 register={register}
                 required={true}
+                value={getValues("duration")}
                 onFocus={() => setError("duration", { type: "", message: "" })}
                 name="duration"
                 type="text"
@@ -134,6 +166,7 @@ const MoviesAdd: React.FC = () => {
               <InputComponent
                 register={register}
                 required={true}
+                value={getValues("year")}
                 onFocus={() => setError("year", { type: "", message: "" })}
                 name="year"
                 type="text"
@@ -148,6 +181,7 @@ const MoviesAdd: React.FC = () => {
                 register={register}
                 name="description"
                 type="text"
+                value={getValues("description")}
                 placeholder="Escreva uma descrição.."
                 maxLength={250}
                 onFocus={() =>

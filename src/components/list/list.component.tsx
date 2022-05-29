@@ -8,7 +8,7 @@ const ListComponent: React.FC<MoviesProps> = ({ title, data }) => {
     <Container>
       <Title>{title}</Title>
       <CardContainer>
-        {data.map((item, index) => (
+        {data?.map((item: any, index: number) => (
           <CardComponent
             id={item.id}
             name={item.name}

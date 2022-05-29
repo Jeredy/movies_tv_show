@@ -22,6 +22,8 @@ export interface PropsContext {
   setEditData?: (editData: any) => void;
   setMovies?: (movies: MoviesModel) => void;
   setCategory?: (category: CategoryModel) => void;
+  deleteMovie?: (id: number, category: string) => void;
+  editMovie?: (data: MoviesModel) => void;
 }
 
 export interface PropsState {
@@ -51,6 +53,8 @@ export enum Types {
   SET_EDIT_DATA = "SET_EDIT_DATA",
   SET_MOVIES = "SET_MOVIES",
   SET_CATEGORY = "SET_CATEGORY",
+  DELETE_MOVIE = "DELETE_MOVIE",
+  EDIT_MOVIE = "EDIT_MOVIE",
 }
 
 export interface LayoutProps {

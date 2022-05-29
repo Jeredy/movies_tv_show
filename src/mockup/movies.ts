@@ -113,7 +113,7 @@ export const moviesData = [
         video: "",
         duration: "2h",
         year: "2012",
-        category: "Science Fiction",
+        category: "Action",
         description:
           "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
       },
@@ -125,7 +125,7 @@ export const moviesData = [
         video: "",
         duration: "2h",
         year: "2012",
-        category: "Science Fiction",
+        category: "Action",
         description:
           "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
       },
@@ -137,7 +137,7 @@ export const moviesData = [
         video: "",
         duration: "2h",
         year: "2012",
-        category: "Science Fiction",
+        category: "Action",
         description:
           "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
       },
@@ -149,7 +149,7 @@ export const moviesData = [
         video: "",
         duration: "2h",
         year: "2012",
-        category: "Science Fiction",
+        category: "Action",
         description:
           "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
       },
@@ -161,7 +161,7 @@ export const moviesData = [
         video: "",
         duration: "2h",
         year: "2012",
-        category: "Science Fiction",
+        category: "Action",
         description:
           "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
       },
@@ -173,7 +173,7 @@ export const moviesData = [
         video: "",
         duration: "2h",
         year: "2012",
-        category: "Science Fiction",
+        category: "Action",
         description:
           "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
       },
@@ -185,7 +185,7 @@ export const moviesData = [
         video: "",
         duration: "2h",
         year: "2012",
-        category: "Science Fiction",
+        category: "Action",
         description:
           "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
       },
@@ -197,7 +197,7 @@ export const moviesData = [
         video: "",
         duration: "2h",
         year: "2012",
-        category: "Science Fiction",
+        category: "Action",
         description:
           "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
       },
