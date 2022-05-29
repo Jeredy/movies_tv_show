@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { Container, Page, IconContainer, Icon } from "./home.styles";
 import TVShowPage from "../tv_show/tv_show.page";
 import MoviesIndex from "../movies";
+import DetailsPageModal from "../details-modal/details-modal.page";
 
 const AnotherPage = () => {
   return (
@@ -34,6 +35,7 @@ const HomePage: React.FC = () => {
       <IconContainer className="menu" onClick={toggleSize}>
         <Icon />
       </IconContainer>
+      <DetailsPageModal />
       <Page>
         <Routes>
           <Route path="/*" element={<MoviesIndex />} />

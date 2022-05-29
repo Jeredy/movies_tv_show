@@ -19,7 +19,7 @@ export const Title = styled.p`
 
 export const Text = styled.p<MenuItemProps>`
   font-size: 14px;
-  color: ${({ selected }) => (selected ? "#dc8665" : "#4b4b4b")};
+  color: ${({ selected }) => (selected ? "#069A8E" : "#4b4b4b")};
   font-weight: 500;
   margin-left: 16px;
   text-align: flex-start;
@@ -42,12 +42,12 @@ export const ItemContainer = styled(Link)<MenuItemProps>`
   align-items: center;
   height: 40px;
   width: 100%;
-  background: ${({ selected }) => (selected ? "#eeb46233" : "#fff")};
+  background: ${({ selected }) => (selected ? "#a1e3d833" : "#fff")};
   padding-left: 30px;
 
   &:hover {
     cursor: pointer;
-    background: #eeb46233;
+    background: #a1e3d833;
   }
 `;
 

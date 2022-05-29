@@ -19,7 +19,7 @@ export const TextAreaContainer = styled.div<
   radius: ${ww(3)}px;
   min-width: 100%;
   max-width: ${ww(57)}px;
-  font-size: ${ww(9)}px;
+  font-size: ${ww(8)}px;
   color: #00000070;
   background-color: #f5f5f5;
   padding: ${ww(6)}px;
@@ -33,7 +33,7 @@ export const TextAreaContainer = styled.div<
 export const TextArea = styled.textarea<InputContainerProps>`
   height: ${ww(46)}px;
   max-height: ${ww(57)}px;
-  font-size: ${ww(9)}px;
+  font-size: ${ww(8)}px;
   min-width: 100%;
   max-width: ${ww(57)}px;
   word-break: break-all;

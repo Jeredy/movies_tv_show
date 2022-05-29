@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import { ReactComponent as Lock } from "../../assets/icons/lock.svg";
+import { ReactComponent as Email } from "../../assets/icons/email.svg";
+
 import { Link } from "react-router-dom";
+import { w, ww } from "../../styles/responsive";
 
 export const AuthContainer = styled.div`
 	display: flex;
@@ -15,47 +19,59 @@ export const AuthBox = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	width: 380px;
+	width: ${ww(216)}px;
 	background-color: #fff;
-	padding: 46px;
-	border-radius: 20px;
+	padding: ${ww(26)}px;
+	border-radius: ${ww(11)}px;
 `;
 
 export const LogoContainer = styled.div`
 	display: flex;
-	margin-bottom: 43px;
+	margin-bottom: ${ww(24)}px;
 `;
 
 export const Logo = styled.img`
-	width: 289px;
-	height: 97px;
+	width: ${ww(165)}px;
+	height: ${ww(55)}px;
 `;
 
 export const InputLink = styled(Link)`
-	margin-top: 23px;
+	font-size: ${ww(9)}px;
+	margin-top: ${ww(11)}px;
 	text-transform: capitalize;
 	color: #3b4ba2;
 `;
 
 export const MainLabel = styled.p`
+	font-size: ${ww(9)}px;
 	font-weight: 700;
-	line-height: 19px;
+	line-height: ${ww(11)}px;
 	color: #4b4b4b;
-	margin-bottom: 23px;
+	margin-bottom: ${ww(11)}px;
 	margin-right: auto;
 `;
 
 export const SubLabel = styled.p`
-	font-size: 14px;
+	font-size: ${ww(8)}px;
 	font-weight: 400;
 	text-align: left;
 	color: #4b4b4b;
-	margin-bottom: 10px;
+	margin-bottom: ${ww(6)}px;
 	margin-right: auto;
 `;
 
 export const TextError = styled.p`
-	font-size: 11px;
+	font-size: ${ww(6)}px;
 	color: #f31;
-	margin-bottom: 10px;
+	margin-bottom: ${ww(6)}px;
 `;
+
+export const EmailIcon = styled(Email).attrs({
+	width: w(9),
+	height: w(11),
+})``;
+
+export const LockIcon = styled(Lock).attrs({
+	width: w(9),
+	height: w(11),
+})``;

@@ -19,12 +19,6 @@ export const Title = styled.p`
   margin-right: auto;
 `;
 
-export const SubContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  max-width: 800px;
-`;
-
 export const FirstMenu = styled.div`
   display: flex;
   align-items: flex-start;

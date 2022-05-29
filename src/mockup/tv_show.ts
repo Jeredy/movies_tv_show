@@ -103,7 +103,7 @@ export const TVShowData = [
   },
   {
     id: 1,
-    title: "Actions",
+    title: "Action",
     data: [
       {
         id: 10,

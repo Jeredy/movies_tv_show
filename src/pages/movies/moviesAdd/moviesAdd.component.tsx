@@ -1,69 +1,94 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 
-import { FormValues } from "../../../types/form";
-import LogoImage from "../../../assets/images/logo.png";
+import { FormGeneralValues } from "../../../types/form";
 
 import {
   Container,
   Form,
   InputContainer,
   MainContainer,
-  AuthBox,
+  Box,
   ArrowDownIcon,
+  CancelButtonContainer,
+  Title,
+  CloseIconContainer,
+  CloseIcon,
 } from "./moviesAdd.styles";
 
 import Button from "../../../components/button/button.components";
 import InputComponent from "../../../components/input/input.component";
 import TextAreaComponent from "../../../components/text-area/text-area.component";
 import SelectComponent from "../../../components/select/select.component";
+import { ww } from "../../../styles/responsive";
+import { GeneralContext } from "../../../context/generalContext";
+import { validate } from "./validateInput";
 
 const MoviesAdd: React.FC = () => {
-  const [flag, setFlag] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
-
-  const navigate = useNavigate();
+  const { setEditData, setPageDetails, setMovies, categories } =
+    React.useContext(GeneralContext);
+  const [selected, setSelected] = React.useState<string>();
 
   const {
     register,
     getValues,
     formState: { errors },
     setError,
-  } = useForm<FormValues>();
+  } = useForm<FormGeneralValues>();
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // const hasError = validate(
-    //   { email: getValues("email"), password: getValues("password") },
-    //   setError,
-    //   errors
-    // );
-    console.log({
-      name: getValues("name"),
-      image: getValues("image"),
-      video: getValues("video"),
-      duration: getValues("duration"),
-      year: getValues("year"),
-    });
+    const hasError = validate(
+      {
+        name: getValues("name"),
+        image: getValues("image"),
+        video: getValues("video"),
+        duration: getValues("duration"),
+        year: getValues("year"),
+      },
+      setError
+    );
+
+    if (hasError) return;
 
     try {
       setIsLoading(true);
 
       setTimeout(() => {
         setIsLoading(false);
-        navigate("/home");
+        setPageDetails?.({});
+        setEditData?.({});
+        setMovies?.({
+          id: 12,
+          name: getValues("name")!,
+          image: getValues("image")!,
+          video: getValues("video")!,
+          duration: getValues("duration")!,
+          year: getValues("year")!,
+          category: selected!,
+          description: "string",
+        });
       }, 2500);
     } catch (err) {
       setIsLoading(false);
     }
   };
 
+  const onCancel = () => {
+    setPageDetails?.({});
+    setEditData?.({});
+  };
+
   return (
     <MainContainer>
-      <AuthBox>
-        <Container style={{ display: "flex" }}>
+      <Box>
+        <Container>
+          <Title>Adicionar Filme</Title>
+          <CloseIconContainer onClick={onCancel}>
+            <CloseIcon />
+          </CloseIconContainer>
           <Form onSubmit={onSubmit}>
             <InputContainer>
               <InputComponent
@@ -74,6 +99,7 @@ const MoviesAdd: React.FC = () => {
                 type="text"
                 placeholder="Name"
                 error={errors.name?.message}
+                width={ww(165)}
               />
               <InputComponent
                 register={register}
@@ -83,6 +109,7 @@ const MoviesAdd: React.FC = () => {
                 type="text"
                 placeholder="Image"
                 error={errors.image?.message}
+                width={ww(165)}
               />
               <InputComponent
                 register={register}
@@ -92,6 +119,7 @@ const MoviesAdd: React.FC = () => {
                 type="text"
                 placeholder="Video"
                 error={errors.video?.message}
+                width={ww(165)}
               />
               <InputComponent
                 register={register}
@@ -101,6 +129,7 @@ const MoviesAdd: React.FC = () => {
                 type="text"
                 placeholder="Duration"
                 error={errors.duration?.message}
+                width={ww(165)}
               />
               <InputComponent
                 register={register}
@@ -110,15 +139,9 @@ const MoviesAdd: React.FC = () => {
                 type="text"
                 placeholder="Year"
                 error={errors.year?.message}
+                width={ww(165)}
               />
-              <SelectComponent
-                data={[
-                  { title: "Action", value: "Action" },
-                  { title: "Science Fiction", value: "Science Fiction" },
-                  { title: "Comic", value: "Comic" },
-                  { title: "Terror", value: "Terror" },
-                ]}
-              >
+              <SelectComponent data={categories} setData={setSelected}>
                 <ArrowDownIcon />
               </SelectComponent>
               <TextAreaComponent
@@ -135,8 +158,18 @@ const MoviesAdd: React.FC = () => {
             </InputContainer>
             <Button type="submit" title="Salvar" isLoading={isLoading} />
           </Form>
+          {!isLoading && (
+            <CancelButtonContainer>
+              <Button
+                title="Cancelar"
+                isLoading={isLoading}
+                inverterColor
+                clickFunction={onCancel}
+              />
+            </CancelButtonContainer>
+          )}
         </Container>
-      </AuthBox>
+      </Box>
     </MainContainer>
   );
 };

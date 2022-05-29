@@ -1,7 +1,7 @@
 export interface CardProps {
+  id: number;
   name: string;
   image: string;
-  year: string;
   index: number;
 }
 

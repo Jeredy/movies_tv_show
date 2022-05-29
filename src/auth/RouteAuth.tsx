@@ -1,27 +1,27 @@
 import React from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
-import { Context } from "../context/authContext";
+import { AuthContext } from "../context/authContext";
 import { AuthProps } from "../types/auth";
 
 const RequireAuth: React.FC<AuthProps> = ({ children }) => {
-  // const auth = React.useContext(Context);
-  // const location = useLocation();
+  //   const { authenticated } = React.useContext(AuthContext);
+  //   const location = useLocation();
 
-  // if (!auth.authenticated) {
-  // 	return <Navigate to="/" state={{ from: location }} replace />;
-  // }
+  //   if (!authenticated) {
+  //     return <Navigate to="/authentication" state={{ from: location }} replace />;
+  //   }
 
   return children;
 };
 
 const AcessAuth: React.FC<AuthProps> = ({ children }) => {
-  // const auth = React.useContext(Context);
-  // const location = useLocation();
+  //   const { authenticated } = React.useContext(AuthContext);
+  //   const navigate = useNavigate();
 
-  // if (auth.authenticated) {
-  // 	return <Navigate to="/home" state={{ from: location }} replace />;
-  // }
+  //   if (authenticated) {
+  //     navigate(-1);
+  //   }
 
   return children;
 };

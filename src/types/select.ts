@@ -1,7 +1,7 @@
-import { SelectDataModel } from "../models/select";
+import { CategoryModel } from "../models/category";
 
 export interface SelectProps {
-  data: SelectDataModel[];
+  data: CategoryModel[];
   children?: React.ReactChild;
   iconStart?: boolean;
   onFocus?: any;

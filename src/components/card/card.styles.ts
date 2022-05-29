@@ -11,7 +11,7 @@ export const Container = styled.div<CardStyleProps>`
 
   &:hover {
     p {
-      opacity: 1;
+      transform: scale(1.05);
     }
   }
 `;
@@ -43,12 +43,12 @@ export const Image = styled.img`
 
 export const Text = styled.p`
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   margin-top: 6px;
   max-width: 150px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: 0.2s ease-in-out;
-  opacity: 0;
+  color: #6c6c6c;
 `;

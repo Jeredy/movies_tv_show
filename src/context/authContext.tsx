@@ -11,15 +11,15 @@ import {
 
 const INITIAL_STATE: PropsContext = {
   admin: null,
-  authenticated: false,
+  authenticated: !!localStorage.getItem("@authenticated"),
   passwordToken: "",
 };
 
-const Context = React.createContext({
+const AuthContext = React.createContext({
   ...INITIAL_STATE,
 });
 
-const Reducer = (state: PropsState, action: PropsAction) => {
+const AuthReducer = (state: PropsState, action: PropsAction) => {
   const { type, payload } = action;
 
   /* eslint-disable */
@@ -28,7 +28,6 @@ const Reducer = (state: PropsState, action: PropsAction) => {
       const authenticated = (state.authenticated = payload!);
 
       localStorage.setItem("@authenticated", JSON.stringify(payload));
-
       return {
         ...state,
         value: authenticated,
@@ -55,8 +54,8 @@ const Reducer = (state: PropsState, action: PropsAction) => {
   /* eslint-enable */
 };
 
-const Provider = (props: LayoutProps) => {
-  const [state, dispatch] = React.useReducer(Reducer, INITIAL_STATE);
+const AuthProvider = (props: LayoutProps) => {
+  const [state, dispatch] = React.useReducer(AuthReducer, INITIAL_STATE);
 
   React.useEffect(() => {
     const isAuthenticated = localStorage.getItem("@authenticated");
@@ -91,7 +90,7 @@ const Provider = (props: LayoutProps) => {
   };
 
   return (
-    <Context.Provider
+    <AuthContext.Provider
       value={{
         admin: state.admin,
         authenticated: state.authenticated,
@@ -105,4 +104,4 @@ const Provider = (props: LayoutProps) => {
   );
 };
 
-export { Context, Provider };
+export { AuthContext, AuthProvider };

@@ -2,7 +2,8 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 import { menuData } from "../../constants/menu";
-import { Context } from "../../context/authContext";
+import { AuthContext } from "../../context/authContext";
+import { GeneralContext } from "../../context/generalContext";
 import {
   Container,
   Title,
@@ -14,11 +15,12 @@ import {
 
 const MenuItem: React.FC = () => {
   const [selected, setSelected] = React.useState(0);
-  const { setAdmin, setAuthenticated } = React.useContext(Context);
+  const { setAdmin, setAuthenticated } = React.useContext(AuthContext);
+  const { setPageDetails } = React.useContext(GeneralContext);
 
   const location = useLocation();
 
-  const currentRoute = location.pathname.split("/")[2];
+  const currentRoute = location.pathname.split("/")[1];
 
   React.useEffect(() => {
     if (!currentRoute) {
@@ -41,6 +43,18 @@ const MenuItem: React.FC = () => {
     }
   };
 
+  const showModalPage = (title: string) => {
+    switch (title.toLowerCase()) {
+      case "add movie":
+        return setPageDetails?.({
+          route: "addMovie",
+          id: 0,
+        });
+      default:
+        return;
+    }
+  };
+
   return (
     <Container>
       {menuData.map((item, index) => (
@@ -56,9 +70,10 @@ const MenuItem: React.FC = () => {
               onClick={() => {
                 setSelected(subItem.id);
                 logout(subItem.id);
+                showModalPage(subItem.title);
               }}
             >
-              <subItem.icon color={selected === subItem.id ? "#dc8665" : ""} />
+              <subItem.icon color={selected === subItem.id ? "#069A8E" : ""} />
               <Text selected={selected === subItem.id}>{subItem.title}</Text>
             </ItemContainer>
           ))}

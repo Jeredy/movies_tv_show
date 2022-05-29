@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as Lock } from "../../../assets/icons/lock.svg";
-import { ReactComponent as Email } from "../../../assets/icons/email.svg";
+import { ww } from "../../../styles/responsive";
 
 export const Container = styled.div`
 	display: flex;
@@ -10,11 +9,7 @@ export const Container = styled.div`
 `;
 
 export const InputContainer = styled.div`
-	margin-bottom: 29px;
+	margin-bottom: ${ww(17)}px;
 `;
 
 export const Form = styled.form``;
-
-export const EmailIcon = styled(Email)``;
-
-export const LockIcon = styled(Lock)``;

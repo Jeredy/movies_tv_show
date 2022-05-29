@@ -10,9 +10,9 @@ const ListComponent: React.FC<MoviesProps> = ({ title, data }) => {
       <CardContainer>
         {data.map((item, index) => (
           <CardComponent
+            id={item.id}
             name={item.name}
             image={item.image}
-            year={item.year}
             index={index}
           />
         ))}

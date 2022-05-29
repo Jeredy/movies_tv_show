@@ -5,12 +5,12 @@ import { InputProps, InputStyle } from "../../types/input";
 
 import {
   Container,
-  InputContainer,
-  InputContainerSmall,
+  InputContainerPrimary,
+  InputContainerSecondary,
   IconContainer,
   Input,
-  InputSmall,
   TextError,
+  Label,
 } from "./input.styles";
 import mask from "./mask";
 
@@ -24,34 +24,45 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
   register,
   error,
   onFocus,
-  isSmall = false,
   maxLength,
   required = false,
   searchFilter,
+  width,
+  isSecondary,
+  value,
 }) => {
   const { searchFilters } = React.useContext(GeneralContext);
   const [activeInput, setActiveInput] = React.useState("");
-  const InputContainerSize = isSmall ? InputContainerSmall : InputContainer;
-  const InputSize = isSmall ? InputSmall : Input;
+  const [innerValue, setInnerValue] = React.useState("");
   const activeElement = (data: string) => {
     setActiveInput(data);
   };
+  const InputContainer = isSecondary
+    ? InputContainerSecondary
+    : InputContainerPrimary;
 
   return (
     <Container>
-      <InputContainerSize
+      {isSecondary && (
+        <Label showLabel={!!innerValue.length || !!value?.length}>
+          {placeholder}
+        </Label>
+      )}
+      <InputContainer
         hasChildren={!!children}
         isFocus={activeInput === name}
         hasError={!!error}
         iconStart={iconStart}
         style={{ ...inputStyle }}
+        width={width}
       >
-        <InputSize
+        <Input
           id={name}
           name={name}
           placeholder={placeholder}
           type={type === "date" ? "text" : type}
           hasChildren={!!children}
+          width={width}
           onFocus={(e) => {
             activeElement(e.target.id);
             onFocus?.();
@@ -59,15 +70,17 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
           {...register?.(name, {
             onChange: (e: any) => (
               (e.target.value = `${mask(e.target.value, type)}`),
-              searchFilter?.({ ...searchFilters, searchInput: e.target.value })
+              searchFilter?.({ ...searchFilters, searchInput: e.target.value }),
+              setInnerValue(e.target.value)
             ),
-            required,
+            value: value,
+            required: required,
           })}
           onBlur={() => activeElement("")}
           maxLength={maxLength}
         />
         <IconContainer iconStart={iconStart}>{children}</IconContainer>
-      </InputContainerSize>
+      </InputContainer>
       {error && <TextError>* {error}</TextError>}
     </Container>
   );

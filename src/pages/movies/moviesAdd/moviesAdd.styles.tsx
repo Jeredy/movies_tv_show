@@ -1,26 +1,34 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ReactComponent as ArrowDown } from "../../../assets/icons/chevron_big_right.svg";
-import { w } from "../../../styles/responsive";
+import { ReactComponent as Close } from "../../../assets/icons/close.svg";
+
+import { w, ww } from "../../../styles/responsive";
 
 export const MainContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  // background: linear-gradient(270deg, #3b4ba2 0%, #4f66e2 100%);
-`;
-
-export const AuthBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 380px;
+  background: #000000bb;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+`;
+
+export const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 360px;
   background-color: #fff;
-  padding: 46px;
+  padding: 27px;
   border-radius: 20px;
+  position: absolute;
 `;
 
 export const LogoContainer = styled.div`
@@ -74,6 +82,41 @@ export const InputContainer = styled.div`
 `;
 
 export const Form = styled.form``;
+
+export const Title = styled.p`
+  font-size: ${ww(15)}px;
+  color: #005555;
+  font-weight: 700;
+  margin-bottom: ${ww(15)}px;
+  align-self: flex-start;
+`;
+
+export const CancelButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: ${ww(5)}px;
+`;
+
+export const CloseIconContainer = styled.div`
+  display: flex;
+  width: ${ww(17)}px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: ${ww(6)}px;
+  right: ${ww(6)}px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const CloseIcon = styled(Close).attrs({
+  width: w(14),
+  height: w(14),
+})`
+  display: flex;
+`;
 
 export const ArrowDownIcon = styled(ArrowDown).attrs({
   width: w(14),

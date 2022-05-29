@@ -25,28 +25,13 @@ const SelectComponent: React.FC<SelectProps & SelectStyle> = ({
   hasCheckBox,
 }) => {
   const [show, setShow] = React.useState(false);
-  const [checked, setChecked] = React.useState([""]);
   const [selected, setSelected] = React.useState({
     title: data[0].title,
-    value: data[0].value,
   });
 
-  const setCheckBox = (title: string) => {
-    const elementIndex = checked.indexOf(title);
-
-    if (elementIndex > 0) {
-      const newChecked = [...checked];
-      newChecked.splice(elementIndex, 1);
-
-      setChecked(newChecked);
-      setModality?.(newChecked);
-    } else {
-      setChecked([...checked, title]);
-      checked?.shift();
-
-      setModality?.([...checked, title]);
-    }
-  };
+  React.useEffect(() => {
+    setData?.(data[0].title);
+  }, []);
 
   return (
     <Container>
@@ -67,7 +52,7 @@ const SelectComponent: React.FC<SelectProps & SelectStyle> = ({
           qtdeItems={data.length!}
           isSmall={isSmall}
         >
-          {data.map(({ title, value }, index) => (
+          {data.map(({ title }, index) => (
             <>
               <ShowOptions
                 key={index}
@@ -75,11 +60,10 @@ const SelectComponent: React.FC<SelectProps & SelectStyle> = ({
                 hasChildren={!!children}
                 onClick={() => (
                   !hasCheckBox && setShow(!show),
-                  setSelected({ title, value }),
-                  setData?.(value),
-                  !hasCheckBox && setStatus?.(value),
-                  setShow(!show),
-                  hasCheckBox && setCheckBox(title)
+                  setSelected({ title }),
+                  setData?.(title),
+                  !hasCheckBox && setStatus?.(title),
+                  setShow(!show)
                 )}
                 hasCheckBox={!!hasCheckBox}
               >

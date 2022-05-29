@@ -4,32 +4,28 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "../../button/button.components";
 import Input from "../../input/input.component";
-import { Context } from "../../../context/authContext";
-import { validate } from "../../input/validateInput";
+import { AuthContext } from "../../../context/authContext";
+import { validate } from "../validateInput";
 import { FormValues } from "../../../types/form";
 import LogoImage from "../../../assets/images/logo.png";
 
 import {
   AuthBox,
   AuthContainer,
+  EmailIcon,
   InputLink,
+  LockIcon,
   Logo,
   LogoContainer,
   TextError,
 } from "../auth.styles";
 
-import {
-  Container,
-  EmailIcon,
-  Form,
-  InputContainer,
-  LockIcon,
-} from "./signIn.styles";
+import { Container, Form, InputContainer } from "./signIn.styles";
+import { ww } from "../../../styles/responsive";
 
 const Signin: React.FC = () => {
-  const { setAdmin, setAuthenticated } = React.useContext(Context);
+  const { setAdmin, setAuthenticated } = React.useContext(AuthContext);
   const [apiError, setApiError] = React.useState(false);
-  const [flag, setFlag] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
 
   const navigate = useNavigate();
@@ -50,25 +46,24 @@ const Signin: React.FC = () => {
       errors
     );
 
-    if (flag && !hasError) {
+    if (!hasError) {
       try {
         setIsLoading(true);
 
         setAdmin?.({
           name: "Paulo Test",
           email: getValues("email")!,
-          token: "123",
+          token: "124123413",
         });
+
         setAuthenticated?.(true);
         setIsLoading(false);
-        navigate("/home");
+        navigate("/home", { replace: true });
       } catch (err) {
         setApiError(true);
         setIsLoading(false);
       }
     }
-
-    setFlag(true);
   };
 
   return (
@@ -81,24 +76,26 @@ const Signin: React.FC = () => {
           <Form onSubmit={onSubmit}>
             <InputContainer>
               <Input
-                register={register("email", {
-                  required: true,
-                })}
+                register={register}
+                required={true}
                 onFocus={() => setError("email", { type: "", message: "" })}
                 name="email"
                 type="text"
                 placeholder="Email"
                 error={errors.email?.message}
+                width={ww(165)}
               >
                 <LockIcon />
               </Input>
               <Input
-                register={register("password", { required: true })}
+                register={register}
+                required={true}
                 onFocus={() => setError("password", { type: "", message: "" })}
                 name="password"
                 type="password"
                 placeholder="Senha"
                 error={errors.password?.message}
+                width={ww(165)}
               >
                 <EmailIcon />
               </Input>

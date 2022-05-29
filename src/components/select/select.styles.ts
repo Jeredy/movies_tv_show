@@ -5,7 +5,7 @@ import {
   IconContainerProps,
   ShowOptionsProps,
 } from "../../types/select";
-import { w, ww } from "../../styles/responsive";
+import { ww } from "../../styles/responsive";
 
 const selectContainerSize = css<SelectContainerProps & IconContainerProps>`
   display: flex;
@@ -19,7 +19,7 @@ const selectContainerSize = css<SelectContainerProps & IconContainerProps>`
   position: relative;
   border-radius: ${ww(3)}px;
   margin-bottom: ${ww(3)}px;
-  border: ${({ isFocus }) => (isFocus ? "1px solid #C6C2DE" : "none")};
+  border: ${({ isFocus }) => (isFocus ? "1px solid #A1E3D866" : "none")};
   z-index: 999;
 
   &:hover {
@@ -49,7 +49,7 @@ export const SelectContainer = styled.div<
   width: ${ww(165)}px;
   max-width: ${ww(165)}px;
   padding-left: ${ww(6)}px;
-  border: ${({ isFocus }) => (isFocus ? "1px solid #C6C2DE" : "none")};
+  border: ${({ isFocus }) => (isFocus ? "1px solid #A1E3D866" : "none")};
 `;
 
 export const SelectContainerSmall = styled.div<
@@ -59,7 +59,7 @@ export const SelectContainerSmall = styled.div<
   width: ${ww(165)}px;
   padding-left: ${ww(6)}px;
   background-color: #fff;
-  border: ${({ isFocus }) => (isFocus ? "1px solid #C6C2DE" : "none")};
+  border: ${({ isFocus }) => (isFocus ? "1px solid #A1E3D866" : "none")};
 `;
 
 export const Select = styled.div<SelectContainerProps>`
@@ -92,7 +92,7 @@ export const IconContainer = styled.div<IconContainerProps>`
 
 export const Text = styled.p`
   font-size: ${ww(7)}px;
-  color: #6e6893;
+  color: #8e8e8e;
 `;
 
 export const ShowContainer = styled(SelectContainerSmall)<ShowOptionsProps>`
@@ -120,5 +120,5 @@ export const ShowOptions = styled(SelectSmall)`
 
 export const Divisor = styled.div`
   width: 100%;
-  border-bottom: 1px solid #c6c2de;
+  border-bottom: 1px solid #a1e3d866;
 `;

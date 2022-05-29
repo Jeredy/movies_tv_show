@@ -63,7 +63,7 @@ export const menuData = [
     title: "Movies",
     data: [
       { id: 10, title: "Movies", icon: MoviesIcon, link: "" },
-      { id: 11, title: "Add Movie", icon: MoviesIcon, link: "add-movie" },
+      { id: 11, title: "Add Movie", icon: MoviesIcon, link: "" },
     ],
   },
   {

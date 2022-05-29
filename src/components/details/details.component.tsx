@@ -34,7 +34,7 @@ const DetailsComponent: React.FC = () => {
         </About>
         <ButtonContainer>
           <Button title="Watch it!" />
-          <Button title="Info" invertedColor={true} />
+          <Button title="Info" inverterColor />
         </ButtonContainer>
       </SubContainer>
     </Container>

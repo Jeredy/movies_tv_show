@@ -1,4 +1,8 @@
 import React from "react";
+import { categoryData } from "../mockup/category";
+import { moviesData } from "../mockup/movies";
+import { CategoryModel } from "../models/category";
+import { MoviesModel } from "../models/movies";
 
 import {
   PropsContext,
@@ -14,6 +18,10 @@ const INITIAL_STATE: PropsContext = {
   totalItems: 100,
   searchFilters: {},
   pageDetails: {},
+  showFilter: true,
+  editData: {},
+  movies: moviesData,
+  categories: categoryData,
 };
 
 const GeneralContext = React.createContext({
@@ -60,6 +68,44 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
         ...state,
         value: pageDetails,
       };
+    case Types.SET_SHOW_FILTER:
+      const showFilter = (state.showFilter = payload);
+
+      return {
+        ...state,
+        value: showFilter,
+      };
+    case Types.SET_EDIT_DATA:
+      const editData = (state.editData = payload);
+
+      return {
+        ...state,
+        value: editData,
+      };
+    case Types.SET_MOVIES:
+      const data = state.movies;
+
+      data.map((element) => {
+        if (element.title === payload.category) {
+          if (!element.data.find((movie) => movie.name === payload.name)) {
+            return element.data.splice(0, 0, payload);
+          }
+        }
+      });
+
+      const movies = data;
+
+      return {
+        ...state,
+        value: movies,
+      };
+    case Types.SET_CATEGORY:
+      // const categories = (state.categories = payload);
+
+      return {
+        ...state,
+        // value: categories,
+      };
     default:
       return state;
   }
@@ -104,6 +150,34 @@ const GeneralProvider = (props: LayoutProps) => {
     });
   };
 
+  const setShowFilter = (showFilter: boolean) => {
+    dispatch({
+      type: Types.SET_SHOW_FILTER,
+      payload: showFilter,
+    });
+  };
+
+  const setEditData = (editData: any) => {
+    dispatch({
+      type: Types.SET_EDIT_DATA,
+      payload: editData,
+    });
+  };
+
+  const setMovies = (movies: MoviesModel) => {
+    dispatch({
+      type: Types.SET_MOVIES,
+      payload: movies,
+    });
+  };
+
+  const setCategory = (category: CategoryModel) => {
+    dispatch({
+      type: Types.SET_CATEGORY,
+      payload: category,
+    });
+  };
+
   return (
     <GeneralContext.Provider
       value={{
@@ -112,11 +186,19 @@ const GeneralProvider = (props: LayoutProps) => {
         currentPage: state.currentPage,
         totalItems: state.totalItems,
         pageDetails: state.pageDetails,
+        showFilter: state.showFilter,
+        editData: state.editData,
+        movies: state.movies,
+        categories: state.categories,
         setSearchFilters,
         setCurrentPage,
         setTotalItems,
         setItemsPage,
         setPageDetails,
+        setShowFilter,
+        setEditData,
+        setMovies,
+        setCategory,
       }}
       {...props}
     />
