@@ -52,9 +52,9 @@ export const InputContainerSecondary = styled.div<
   border-bottom: ${({ hasError }) =>
     hasError ? "1px solid #f31" : "1px solid #A1E3D866"};
   border-radius: 0px;
-
   font-style: italic;
   font-weight: 400;
+
   input {
     font-size: ${ww(8)}px;
   }

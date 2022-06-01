@@ -7,7 +7,7 @@ import { ReactComponent as Real } from "../assets/icons/real.svg";
 import { ReactComponent as TVShow } from "../assets/icons/tv_show.svg";
 import { ReactComponent as System } from "../assets/icons/system.svg";
 
-import { ReactComponent as Favorites } from "../assets/icons/favorites.svg";
+import { ReactComponent as Categories } from "../assets/icons/category.svg";
 
 import { ReactComponent as Settings } from "../assets/icons/settings@2.svg";
 import { ReactComponent as Language } from "../assets/icons/language.svg";
@@ -41,7 +41,7 @@ const SystemIcon = styled(System)<MenuIconProps>`
   ${iconStyle}
 `;
 
-const FavoritesIcon = styled(Favorites)<MenuIconProps>`
+const CategoriesIcon = styled(Categories)<MenuIconProps>`
   ${iconStyle}
 `;
 
@@ -80,13 +80,12 @@ export const menuData = [
   },
   {
     id: 3,
-    title: "Favorites",
+    title: "Categories",
     data: [
       {
         id: 30,
-        title: "Favorites",
-        icon: FavoritesIcon,
-        link: "another-page",
+        title: "Categories",
+        icon: CategoriesIcon,
       },
     ],
   },
@@ -100,7 +99,6 @@ export const menuData = [
         icon: SettingsIcon,
         link: "another-page",
       },
-      { id: 41, title: "Language", icon: LanguageIcon, link: "another-page" },
       {
         id: 42,
         title: "Log out",

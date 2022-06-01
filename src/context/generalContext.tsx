@@ -49,8 +49,6 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
       const moviesAfterAdded =
         payload.route.search("movies") > -1 ? state.movies : state.tvShows;
 
-      console.log(payload);
-
       if (
         moviesAfterAdded.findIndex(
           (streaming) => streaming.name === payload.movie.name
@@ -103,12 +101,61 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
         ...state,
         value: moviesAfterEdited,
       };
-    case Types.SET_CATEGORY:
-      // const categories = (state.categories = payload);
+    case Types.ADD_CATEGORY:
+      const categoriesAfterAdded = state.categories;
+
+      if (
+        categoriesAfterAdded.findIndex(
+          (category) => category.title === payload.title
+        ) === -1
+      ) {
+        categoriesAfterAdded.splice(0, 0, payload);
+      }
 
       return {
         ...state,
-        // value: categories,
+        value: categoriesAfterAdded,
+      };
+    case Types.EDIT_CATEGORY:
+      const categoriesAfterEdited = state.categories;
+
+      if (
+        categoriesAfterEdited.findIndex(
+          (category) => category.id === payload.id
+        ) > -1
+      ) {
+        console.log(payload.title);
+        categoriesAfterEdited.splice(
+          categoriesAfterEdited.findIndex(
+            (category) => category.id === payload.id
+          ),
+          1,
+          payload
+        );
+      }
+
+      return {
+        ...state,
+        value: categoriesAfterEdited,
+      };
+    case Types.DELETE_CATEGORY:
+      const categoriesAfterDeleted = state.categories;
+
+      if (
+        categoriesAfterDeleted.findIndex(
+          (category) => category.id === payload
+        ) > -1
+      ) {
+        categoriesAfterDeleted.splice(
+          categoriesAfterDeleted.findIndex(
+            (category) => category.id === payload
+          ),
+          1
+        );
+      }
+      return {
+        ...state,
+        value: categoriesAfterDeleted,
       };
     default:
       return state;
@@ -143,13 +190,6 @@ const GeneralProvider = (props: LayoutProps) => {
     });
   };
 
-  const setCategory = (category: CategoryModel) => {
-    dispatch({
-      type: Types.SET_CATEGORY,
-      payload: category,
-    });
-  };
-
   const deleteMovie = (id: number) => {
     dispatch({
       type: Types.DELETE_MOVIE,
@@ -164,6 +204,27 @@ const GeneralProvider = (props: LayoutProps) => {
     });
   };
 
+  const addCategory = (category: CategoryModel) => {
+    dispatch({
+      type: Types.ADD_CATEGORY,
+      payload: category,
+    });
+  };
+
+  const editCategory = (category: CategoryModel) => {
+    dispatch({
+      type: Types.EDIT_CATEGORY,
+      payload: category,
+    });
+  };
+
+  const deleteCategory = (id: string) => {
+    dispatch({
+      type: Types.DELETE_CATEGORY,
+      payload: id,
+    });
+  };
+
   return (
     <GeneralContext.Provider
       value={{
@@ -175,9 +236,11 @@ const GeneralProvider = (props: LayoutProps) => {
         setPageDetails,
         setEditData,
         addMovie,
-        setCategory,
         deleteMovie,
         editMovie,
+        addCategory,
+        editCategory,
+        deleteCategory,
       }}
       {...props}
     />

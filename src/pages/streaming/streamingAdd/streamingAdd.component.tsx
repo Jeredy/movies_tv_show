@@ -88,7 +88,7 @@ const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
       setIsLoading(true);
 
       const newData = {
-        id: id ?? Math.random() + 1,
+        id: id ?? new Date().getTime(),
         name: getValues("name")!,
         image: getValues("image")!,
         video: getValues("video")!,

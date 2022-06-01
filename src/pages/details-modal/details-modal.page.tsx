@@ -1,5 +1,6 @@
 import React from "react";
 import { GeneralContext } from "../../context/generalContext";
+import CategoryPage from "../category/category.page";
 import StreamingAdd from "../streaming/streamingAdd/streamingAdd.component";
 import StreamingDetailPage from "../streaming/streamingDetails/streamingDetails.page";
 
@@ -12,6 +13,8 @@ const DetailsPageModal: React.FC = () => {
       return <StreamingAdd route={pageDetails?.route} />;
     case "streamingDetail":
       return <StreamingDetailPage />;
+    case "categoryDetail":
+      return <CategoryPage />;
     default:
       return <></>;
   }

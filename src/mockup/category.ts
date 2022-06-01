@@ -19,4 +19,9 @@ export const categoryData = [
     title: "Animation",
     value: "Animation",
   },
+  {
+    id: "369235",
+    title: "Comedy",
+    value: "Comedy",
+  },
 ];

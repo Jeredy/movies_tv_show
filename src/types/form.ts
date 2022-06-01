@@ -19,3 +19,7 @@ export type FormGeneralValues = {
   year?: string;
   description?: string;
 };
+
+export type FormCategoryValues = {
+  category?: string;
+};

@@ -57,6 +57,12 @@ const MenuItem: React.FC = () => {
           action: "addStreaming",
           id: 0,
         });
+      case "categories":
+        return setPageDetails?.({
+          route: "categories",
+          action: "categoryDetail",
+          id: 0,
+        });
       default:
         return;
     }

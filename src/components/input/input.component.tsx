@@ -1,5 +1,4 @@
 import React from "react";
-import { GeneralContext } from "../../context/generalContext";
 
 import { InputProps, InputStyle } from "../../types/input";
 
@@ -26,7 +25,6 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
   onFocus,
   maxLength,
   required = false,
-  searchFilter,
   width,
   isSecondary,
   value,
@@ -59,7 +57,7 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
           id={name}
           name={name}
           placeholder={placeholder}
-          type={type === "date" ? "text" : type}
+          type={type}
           hasChildren={!!children}
           width={width}
           onFocus={(e) => {

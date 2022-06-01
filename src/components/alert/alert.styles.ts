@@ -35,7 +35,7 @@ export const Box = styled.div<AlertStyleProps>`
   background: #ffffff;
   border-radius: ${ww(3)}px;
   width: ${ww(181)}px;
-  padding: ${w(7, 20, 10, 20)};
+  padding: ${w(7, 16, 10, 16)};
 
   & :nth-child(4) {
     margin-top: ${ww(11)}px;
@@ -50,6 +50,7 @@ export const Icon = styled(Check).attrs({
   width: w(16),
   height: w(16),
 })``;
+
 export const TrashIcon = styled(Trash).attrs({
   width: w(18),
   height: w(18),
