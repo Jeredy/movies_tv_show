@@ -1,17 +1,21 @@
 import styled, { css } from "styled-components";
+import { w, ww } from "../../styles/responsive";
 
 import {
   SelectContainerProps,
   IconContainerProps,
   ShowOptionsProps,
 } from "../../types/select";
-import { ww } from "../../styles/responsive";
+
+//small: 81
+//medium: 131
+//large: 164
 
 const selectContainerSize = css<SelectContainerProps & IconContainerProps>`
   display: flex;
   height: ${ww(23)}px;
   radius: ${ww(3)}px;
-  width: ${ww(165)}px;
+  width: ${({ width }) => width}px;
   font-size: ${ww(12)}px;
   color: #00000070;
   padding-left: ${ww(6)}px;
@@ -19,8 +23,8 @@ const selectContainerSize = css<SelectContainerProps & IconContainerProps>`
   position: relative;
   border-radius: ${ww(3)}px;
   margin-bottom: ${ww(3)}px;
-  border: ${({ isFocus }) => (isFocus ? "1px solid #A1E3D866" : "none")};
-  z-index: 999;
+  border: ${({ isFocus }) => (isFocus ? "1px solid #C6C2DE" : "none")};
+  z-index: 9;
 
   &:hover {
     cursor: pointer;
@@ -46,36 +50,22 @@ export const SelectContainer = styled.div<
   SelectContainerProps & IconContainerProps
 >`
   ${selectContainerSize}
-  width: ${ww(165)}px;
-  max-width: ${ww(165)}px;
+  width: ${({ width }) => width}px;
+  max-width: ${({ width }) => width}px;
   padding-left: ${ww(6)}px;
-  border: ${({ isFocus }) => (isFocus ? "1px solid #A1E3D866" : "none")};
-`;
-
-export const SelectContainerSmall = styled.div<
-  SelectContainerProps & IconContainerProps
->`
-  ${selectContainerSize}
-  width: ${ww(165)}px;
-  padding-left: ${ww(6)}px;
-  background-color: #fff;
   border: ${({ isFocus }) => (isFocus ? "1px solid #A1E3D866" : "none")};
 `;
 
 export const Select = styled.div<SelectContainerProps>`
   ${selectStyle}
-  width: ${({ hasChildren }) => (hasChildren ? ww(171) : ww(188))}px;
-`;
-
-export const SelectSmall = styled.div<SelectContainerProps>`
-  ${selectStyle}
-  width: ${({ hasChildren }) => (hasChildren ? ww(34) : ww(51))}px;
+  width: ${({ hasChildren, width }) =>
+    hasChildren ? width! - 55 : width}px; //edit
 `;
 
 export const SelectTooSmall = styled.div<SelectContainerProps>`
   ${selectStyle}
   height:${ww(17)}px;
-  width: ${({ hasChildren }) => (hasChildren ? ww(34) : ww(51))}px;
+  width: ${({ hasChildren }) => (hasChildren ? ww(34) : ww(51))}px; //edit
 `;
 
 export const IconContainer = styled.div<IconContainerProps>`
@@ -95,29 +85,32 @@ export const Text = styled.p`
   color: #8e8e8e;
 `;
 
-export const ShowContainer = styled(SelectContainerSmall)<ShowOptionsProps>`
+//SHOW OPTIONS
+export const ShowContainer = styled(SelectContainer)<ShowOptionsProps>`
   position: absolute;
   flex-direction: column;
-  top: ${ww(23)}px;
+  top: ${ww(24)}px;
   left: 0px;
   margin: 0px;
   padding: 0px;
   height: ${({ qtdeItems }) => ww(24) * qtdeItems}px;
-  width: ${ww(165)};
+  width: ${({ width }) => width}px;
   overflow-y: scroll;
+  box-shadow: 0 0.2rem 0.3rem #00000033;
 `;
 
-export const ShowOptions = styled(SelectSmall)`
+export const ShowOptions = styled(Select)`
   width: 100%;
   align-items: center;
-  justify-content: center;
-  min-height: ${ww(23)}px;
+  justify-content: ${({ hasCheckBox }) =>
+    hasCheckBox ? "flex-start" : "center"};
 
   &:hover {
     cursor: pointer;
   }
 `;
 
+//PAGE ITEM
 export const Divisor = styled.div`
   width: 100%;
   border-bottom: 1px solid #a1e3d866;

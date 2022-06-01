@@ -1,20 +1,18 @@
-import { CategoryModel } from "../models/category";
+import { SelectDataModel } from "../models/select";
 
 export interface SelectProps {
-  data: CategoryModel[];
+  data: SelectDataModel[];
   children?: React.ReactChild;
-  iconStart?: boolean;
   onFocus?: any;
   setData?: (data: any) => void;
-  setStatus?: React.Dispatch<React.SetStateAction<string>>;
-  setModality?: React.Dispatch<React.SetStateAction<string[]>>;
-  hasCheckBox?: boolean;
+  initialValue?: number;
 }
 
 export interface SelectContainerProps {
   hasChildren: boolean;
   isFocus: boolean;
   hasCheckBox?: boolean;
+  width?: number;
 }
 
 export interface IconContainerProps {
@@ -23,11 +21,10 @@ export interface IconContainerProps {
 
 export interface SelectStyle {
   inputStyle?: React.CSSProperties;
-  isSmall?: boolean;
   isPageItems?: boolean;
+  width?: number;
 }
 
 export interface ShowOptionsProps {
   qtdeItems: number;
-  isSmall: boolean;
 }

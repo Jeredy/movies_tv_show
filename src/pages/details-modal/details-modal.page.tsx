@@ -1,17 +1,17 @@
 import React from "react";
 import { GeneralContext } from "../../context/generalContext";
-import MoviesAdd from "../movies/moviesAdd/moviesAdd.component";
-import MovieDetailPage from "../movies/moviesDetail/moviesDetails.page";
+import StreamingAdd from "../streaming/streamingAdd/streamingAdd.component";
+import StreamingDetailPage from "../streaming/streamingDetails/streamingDetails.page";
 
 const DetailsPageModal: React.FC = () => {
   const { pageDetails } = React.useContext(GeneralContext);
 
   /* eslint-disable */
-  switch (pageDetails?.route) {
-    case "addMovie":
-      return <MoviesAdd />;
-    case "movieDetail":
-      return <MovieDetailPage />;
+  switch (pageDetails?.action) {
+    case "addStreaming":
+      return <StreamingAdd route={pageDetails?.route} />;
+    case "streamingDetail":
+      return <StreamingDetailPage />;
     default:
       return <></>;
   }

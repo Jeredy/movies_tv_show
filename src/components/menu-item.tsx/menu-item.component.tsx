@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { menuData } from "../../constants/menu";
 import { AuthContext } from "../../context/authContext";
@@ -17,7 +17,7 @@ const MenuItem: React.FC = () => {
   const [selected, setSelected] = React.useState(0);
   const { setAdmin, setAuthenticated } = React.useContext(AuthContext);
   const { setPageDetails } = React.useContext(GeneralContext);
-
+  const navigate = useNavigate();
   const location = useLocation();
 
   const currentRoute = location.pathname.split("/")[1];
@@ -47,7 +47,14 @@ const MenuItem: React.FC = () => {
     switch (title.toLowerCase()) {
       case "add movie":
         return setPageDetails?.({
-          route: "addMovie",
+          route: "movies",
+          action: "addStreaming",
+          id: 0,
+        });
+      case "add tv shows":
+        return setPageDetails?.({
+          route: "tv_shows",
+          action: "addStreaming",
           id: 0,
         });
       default:
@@ -64,14 +71,20 @@ const MenuItem: React.FC = () => {
           </TitleContainer>
           {item.data.map((subItem, index) => (
             <ItemContainer
-              to={subItem.link}
               key={index}
               selected={selected === subItem.id}
-              onClick={() => {
-                setSelected(subItem.id);
-                logout(subItem.id);
-                showModalPage(subItem.title);
-              }}
+              onClick={
+                subItem.link
+                  ? () => {
+                      setSelected(subItem.id);
+                      logout(subItem.id);
+                      showModalPage(subItem.title);
+                      navigate(subItem.link);
+                    }
+                  : () => {
+                      showModalPage(subItem.title);
+                    }
+              }
             >
               <subItem.icon color={selected === subItem.id ? "#069A8E" : ""} />
               <Text selected={selected === subItem.id}>{subItem.title}</Text>

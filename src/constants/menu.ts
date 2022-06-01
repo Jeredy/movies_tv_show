@@ -62,20 +62,19 @@ export const menuData = [
     id: 1,
     title: "Movies",
     data: [
-      { id: 10, title: "Movies", icon: MoviesIcon, link: "" },
-      { id: 11, title: "Add Movie", icon: MoviesIcon, link: "" },
+      { id: 10, title: "Movies", icon: MoviesIcon, link: "movies" },
+      { id: 11, title: "Add Movie", icon: MoviesIcon },
     ],
   },
   {
     id: 2,
     title: "TV Series",
     data: [
-      { id: 20, title: "Tv Series", icon: TVShowIcon, link: "tv_show" },
+      { id: 20, title: "Tv Shows", icon: TVShowIcon, link: "tv_shows" },
       {
         id: 21,
-        title: "Add TV Series",
+        title: "Add TV Shows",
         icon: TVShowIcon,
-        link: "another-page",
       },
     ],
   },

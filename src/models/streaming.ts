@@ -1,4 +1,4 @@
-export interface MoviesModel {
+export interface StreamingModel {
   id: number;
   name: string;
   image: string;

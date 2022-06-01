@@ -1,13 +1,13 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import { useLocation } from "react-router-dom";
 import Alert from "../../../components/alert/alert.component";
 
 import Button from "../../../components/button/button.components";
 import { GeneralContext } from "../../../context/generalContext";
-import { MoviesModel } from "../../../models/movies";
+import { StreamingModel } from "../../../models/streaming";
 import { w, ww } from "../../../styles/responsive";
 
-// Render a YouTube video player
 import {
   About,
   ButtonContainer,
@@ -19,36 +19,44 @@ import {
   CloseIconContainer,
   CloseIcon,
   DetailContainer,
-} from "./moviesDetails.styles";
+} from "./streamingDetails.styles";
 
-const MovieDetailPage: React.FC = () => {
-  const { movies, pageDetails, setPageDetails, deleteMovie, setEditData } =
-    React.useContext(GeneralContext);
-  const [data, setData] = React.useState<MoviesModel>();
+const StreamingDetailPage: React.FC = () => {
+  const {
+    movies,
+    tvShows,
+    pageDetails,
+    setPageDetails,
+    categories,
+    deleteMovie,
+    setEditData,
+  } = React.useContext(GeneralContext);
+  const [data, setData] = React.useState<StreamingModel>();
   const [play, setPlay] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [showCautionAlert, setShowCautionAlert] = React.useState(false);
+  const location = useLocation();
+  const currentPage = location.pathname.split("/")[1];
   const { id } = pageDetails;
 
   React.useEffect(() => {
-    movies.forEach((element) =>
-      element.data.forEach((movie) => {
-        if (movie.id === id) {
-          return setData(movie);
-        }
-      })
-    );
+    const currentData = currentPage.search("movies") > -1 ? movies : tvShows;
+
+    currentData.forEach((streaming) => {
+      if (streaming.id === id) {
+        return setData(streaming);
+      }
+    });
   });
 
-  const deleteData = (id: number, category: string) => {
+  const deleteData = (id: number) => {
     setIsLoading(true);
-    deleteMovie?.(id, category);
+    deleteMovie?.(id);
 
-    console.log("movie:", id);
     setTimeout(() => {
       setPageDetails?.({});
       setIsLoading(false);
-    }, 2500);
+    }, 1500);
   };
 
   return (
@@ -65,7 +73,15 @@ const MovieDetailPage: React.FC = () => {
           <Details>
             <Text>{data?.year}</Text>
             <Text>{data?.duration}</Text>
-            <Text>{data?.category}</Text>
+            <Text>
+              {
+                categories[
+                  categories.findIndex(
+                    (categoria) => categoria.id === data?.category
+                  )
+                ]?.title
+              }
+            </Text>
           </Details>
           <About>{data?.description}</About>
           <ButtonContainer>
@@ -78,7 +94,11 @@ const MovieDetailPage: React.FC = () => {
               title="Edit"
               clickFunction={() => (
                 setEditData?.({ id: id }),
-                setPageDetails?.({ id: data?.id, route: "addMovie" })
+                setPageDetails?.({
+                  id: data?.id,
+                  action: "addStreaming",
+                  route: currentPage,
+                })
               )}
             />
             <Button
@@ -106,7 +126,7 @@ const MovieDetailPage: React.FC = () => {
           text={`Você está prestes a deletar esse filme:${data?.name}`}
           buttonText="Deletar"
           clickFunction={() => setShowCautionAlert(false)}
-          cautionFunction={() => deleteData(data?.id!, data?.category!)}
+          cautionFunction={() => deleteData(data?.id!)}
           isLoading={isLoading}
           isCaution={true}
         />
@@ -115,4 +135,4 @@ const MovieDetailPage: React.FC = () => {
   );
 };
 
-export default MovieDetailPage;
+export default StreamingDetailPage;

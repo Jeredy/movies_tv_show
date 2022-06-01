@@ -31,7 +31,6 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
   isSecondary,
   value,
 }) => {
-  const { searchFilters } = React.useContext(GeneralContext);
   const [activeInput, setActiveInput] = React.useState("");
   const [innerValue, setInnerValue] = React.useState("");
   const activeElement = (data: string) => {
@@ -70,7 +69,6 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
           {...register?.(name, {
             onChange: (e: any) => (
               (e.target.value = `${mask(e.target.value, type)}`),
-              searchFilter?.({ ...searchFilters, searchInput: e.target.value }),
               setInnerValue(e.target.value)
             ),
             value: value,

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 import { MenuItemProps } from "../../types/menu";
 
@@ -37,7 +36,7 @@ export const TitleContainer = styled.div<MenuItemProps>`
   padding: 0px 20px;
 `;
 
-export const ItemContainer = styled(Link)<MenuItemProps>`
+export const ItemContainer = styled.div<MenuItemProps>`
   display: flex;
   align-items: center;
   height: 40px;

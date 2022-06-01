@@ -33,7 +33,7 @@ export const validate = (value: FormGeneralValues, setError: any) => {
       });
     } else if (
       value.image?.search(".png") === -1 &&
-      value.image?.search(".png") === -1 &&
+      value.image?.search(".jpg") === -1 &&
       value.image?.search(".jpeg") === -1
     ) {
       passError.image = true;

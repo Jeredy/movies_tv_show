@@ -15,16 +15,16 @@ export const App: React.FC = () => {
       <GeneralProvider>
         <GlobalStyles />
         <Routes>
-          <Route
+          {/* <Route
             path="/"
             element={
               <AcessAuth>
                 <Signin />
               </AcessAuth>
             }
-          />
+          /> */}
           <Route
-            path="/home/*"
+            path="/*"
             element={
               <RequireAuth>
                 <HomePage />

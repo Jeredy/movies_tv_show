@@ -4,9 +4,8 @@ import Menu from "../../components/menu/menu.components";
 import { Route, Routes } from "react-router-dom";
 
 import { Container, Page, IconContainer, Icon } from "./home.styles";
-import TVShowPage from "../tv_show/tv_show.page";
-import MoviesIndex from "../movies";
 import DetailsPageModal from "../details-modal/details-modal.page";
+import StreamingMain from "../streaming/streamingMain/streamingMain.component";
 
 const AnotherPage = () => {
   return (
@@ -38,8 +37,8 @@ const HomePage: React.FC = () => {
       <DetailsPageModal />
       <Page>
         <Routes>
-          <Route path="/*" element={<MoviesIndex />} />
-          <Route path="tv_show" element={<TVShowPage />} />
+          <Route path="movies" element={<StreamingMain />} />
+          <Route path="tv_shows" element={<StreamingMain />} />
           <Route path="another-page" element={<AnotherPage />} />
         </Routes>
       </Page>

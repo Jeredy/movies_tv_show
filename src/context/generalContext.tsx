@@ -1,8 +1,9 @@
 import React from "react";
 import { categoryData } from "../mockup/category";
 import { moviesData } from "../mockup/movies";
+import { tvShowData } from "../mockup/tv_show";
 import { CategoryModel } from "../models/category";
-import { MoviesModel } from "../models/movies";
+import { StreamingModel } from "../models/streaming";
 
 import {
   PropsContext,
@@ -13,14 +14,10 @@ import {
 } from "../types/generalContext";
 
 const INITIAL_STATE: PropsContext = {
-  currentPage: 1,
-  itemsPage: 10,
-  totalItems: 100,
-  searchFilters: {},
   pageDetails: {},
-  showFilter: true,
   editData: {},
   movies: moviesData,
+  tvShows: tvShowData,
   categories: categoryData,
 };
 
@@ -33,34 +30,6 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
 
   /* eslint-disable */
   switch (type) {
-    case Types.SET_CURRENT_PAGE:
-      const currentPage = (state.currentPage = payload);
-
-      return {
-        ...state,
-        value: currentPage,
-      };
-    case Types.SET_TOTAL_ITEMS:
-      const totalItems = (state.totalItems = payload);
-
-      return {
-        ...state,
-        value: totalItems,
-      };
-    case Types.SET_ITEMS_PAGE:
-      const itemsPage = (state.itemsPage = payload);
-
-      return {
-        ...state,
-        value: itemsPage,
-      };
-    case Types.SET_SEARCH_FILTERS:
-      const searchFilters = (state.searchFilters = payload);
-
-      return {
-        ...state,
-        value: searchFilters,
-      };
     case Types.SET_PAGE_DETAILS:
       const pageDetails = (state.pageDetails = payload);
 
@@ -68,13 +37,7 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
         ...state,
         value: pageDetails,
       };
-    case Types.SET_SHOW_FILTER:
-      const showFilter = (state.showFilter = payload);
 
-      return {
-        ...state,
-        value: showFilter,
-      };
     case Types.SET_EDIT_DATA:
       const editData = (state.editData = payload);
 
@@ -82,53 +45,59 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
         ...state,
         value: editData,
       };
-    case Types.SET_MOVIES:
-      const moviesAfterAdded = state.movies;
+    case Types.ADD_MOVIE:
+      const moviesAfterAdded =
+        payload.route.search("movies") > -1 ? state.movies : state.tvShows;
 
-      moviesAfterAdded.map((element) => {
-        if (element.title === payload.category) {
-          if (!element.data.find((movie) => movie.name === payload.name)) {
-            return element.data.splice(0, 0, payload);
-          }
-        }
-      });
+      console.log(payload);
+
+      if (
+        moviesAfterAdded.findIndex(
+          (streaming) => streaming.name === payload.movie.name
+        ) === -1
+      ) {
+        moviesAfterAdded.splice(0, 0, payload.movie);
+      }
 
       return {
         ...state,
         value: moviesAfterAdded,
       };
     case Types.DELETE_MOVIE:
-      const moviesAfterDeleted = state.movies;
+      const moviesAfterDeleted =
+        payload.route.search("movies") > -1 ? state.movies : state.tvShows;
 
-      moviesAfterDeleted.map((element) => {
-        if (element.title === payload.category) {
-          if (element.data.find((movie) => movie.id === payload.id)) {
-            return element.data.splice(
-              element.data.findIndex((movie) => movie.id === payload.id),
-              1
-            );
-          }
-        }
-      });
+      if (
+        moviesAfterDeleted.findIndex((streaming) => streaming.id === payload) >
+        -1
+      ) {
+        moviesAfterDeleted.splice(
+          moviesAfterDeleted.findIndex((streaming) => streaming.id === payload),
+          1
+        );
+      }
 
       return {
         ...state,
         value: moviesAfterDeleted,
       };
     case Types.EDIT_MOVIE:
-      const moviesAfterEdited = state.movies;
+      const moviesAfterEdited =
+        payload.route.search("movies") > -1 ? state.movies : state.tvShows;
 
-      moviesAfterEdited.map((element) => {
-        if (element.title === payload.category) {
-          if (element.data.find((movie) => movie.id === payload.id)) {
-            return element.data.splice(
-              element.data.findIndex((movie) => movie.id === payload.id),
-              1,
-              payload
-            );
-          }
-        }
-      });
+      if (
+        moviesAfterEdited.findIndex(
+          (streaming) => streaming.id === payload.id
+        ) > -1
+      ) {
+        moviesAfterEdited.splice(
+          moviesAfterEdited.findIndex(
+            (streaming) => streaming.id === payload.id
+          ),
+          1,
+          payload
+        );
+      }
 
       return {
         ...state,
@@ -150,45 +119,10 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
 const GeneralProvider = (props: LayoutProps) => {
   const [state, dispatch] = React.useReducer(GeneralReducer, INITIAL_STATE);
 
-  const setCurrentPage = (atualPage: number | null) => {
-    dispatch({
-      type: Types.SET_CURRENT_PAGE,
-      payload: atualPage,
-    });
-  };
-
-  const setTotalItems = (totalPage: number) => {
-    dispatch({
-      type: Types.SET_TOTAL_ITEMS,
-      payload: totalPage,
-    });
-  };
-
-  const setItemsPage = (itemsPage: number) => {
-    dispatch({
-      type: Types.SET_ITEMS_PAGE,
-      payload: itemsPage,
-    });
-  };
-
-  const setSearchFilters = (searchFilters: any) => {
-    dispatch({
-      type: Types.SET_SEARCH_FILTERS,
-      payload: searchFilters,
-    });
-  };
-
   const setPageDetails = (pageDetails: any) => {
     dispatch({
       type: Types.SET_PAGE_DETAILS,
       payload: pageDetails,
-    });
-  };
-
-  const setShowFilter = (showFilter: boolean) => {
-    dispatch({
-      type: Types.SET_SHOW_FILTER,
-      payload: showFilter,
     });
   };
 
@@ -199,10 +133,13 @@ const GeneralProvider = (props: LayoutProps) => {
     });
   };
 
-  const setMovies = (movies: MoviesModel) => {
+  const addMovie = (movie: StreamingModel, route: string) => {
     dispatch({
-      type: Types.SET_MOVIES,
-      payload: movies,
+      type: Types.ADD_MOVIE,
+      payload: {
+        movie,
+        route,
+      },
     });
   };
 
@@ -213,14 +150,14 @@ const GeneralProvider = (props: LayoutProps) => {
     });
   };
 
-  const deleteMovie = (id: number, category: string) => {
+  const deleteMovie = (id: number) => {
     dispatch({
       type: Types.DELETE_MOVIE,
-      payload: { id, category },
+      payload: id,
     });
   };
 
-  const editMovie = (data: MoviesModel) => {
+  const editMovie = (data: StreamingModel) => {
     dispatch({
       type: Types.EDIT_MOVIE,
       payload: data,
@@ -230,23 +167,14 @@ const GeneralProvider = (props: LayoutProps) => {
   return (
     <GeneralContext.Provider
       value={{
-        searchFilters: state.searchFilters,
-        itemsPage: state.itemsPage,
-        currentPage: state.currentPage,
-        totalItems: state.totalItems,
         pageDetails: state.pageDetails,
-        showFilter: state.showFilter,
         editData: state.editData,
         movies: state.movies,
+        tvShows: state.tvShows,
         categories: state.categories,
-        setSearchFilters,
-        setCurrentPage,
-        setTotalItems,
-        setItemsPage,
         setPageDetails,
-        setShowFilter,
         setEditData,
-        setMovies,
+        addMovie,
         setCategory,
         deleteMovie,
         editMovie,

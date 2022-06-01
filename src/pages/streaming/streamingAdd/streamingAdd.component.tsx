@@ -14,7 +14,7 @@ import {
   Title,
   CloseIconContainer,
   CloseIcon,
-} from "./moviesAdd.styles";
+} from "./streamingAdd.styles";
 
 import Button from "../../../components/button/button.components";
 import InputComponent from "../../../components/input/input.component";
@@ -23,20 +23,22 @@ import SelectComponent from "../../../components/select/select.component";
 import { ww } from "../../../styles/responsive";
 import { GeneralContext } from "../../../context/generalContext";
 import { validate } from "./validateInput";
-import { MoviesModel } from "../../../models/movies";
+import { StreamingAddProps } from "../../../types/streaming";
 
-const MoviesAdd: React.FC = () => {
+const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const {
     movies,
+    tvShows,
     editData,
     setEditData,
     setPageDetails,
-    setMovies,
+    addMovie,
     editMovie,
     categories,
   } = React.useContext(GeneralContext);
   const [selected, setSelected] = React.useState<string>();
+  const [setectInitialValue, setSelectInitialValue] = React.useState<number>();
   const { id } = editData;
 
   const {
@@ -48,19 +50,22 @@ const MoviesAdd: React.FC = () => {
   } = useForm<FormGeneralValues>();
 
   React.useEffect(() => {
-    movies.forEach((element) =>
-      element.data.forEach((movie) => {
-        if (movie.id === id) {
-          setValue("name", movie.name);
-          setValue("image", movie.image);
-          setValue("video", movie.video);
-          setValue("duration", movie.duration);
-          setValue("year", movie.year);
-          setValue("description", movie.description);
-          return;
-        }
-      })
-    );
+    const currentData = route.search("movies") > -1 ? movies : tvShows;
+
+    currentData.forEach((streaming) => {
+      if (streaming.id === id) {
+        setValue("name", streaming.name);
+        setValue("image", streaming.image);
+        setValue("video", streaming.video);
+        setValue("duration", streaming.duration);
+        setValue("year", streaming.year);
+        setValue("description", streaming.description);
+        setSelectInitialValue(
+          categories.findIndex((category) => category.id === streaming.category)
+        );
+        return;
+      }
+    });
   });
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -97,8 +102,8 @@ const MoviesAdd: React.FC = () => {
         setIsLoading(false);
         setPageDetails?.({});
         setEditData?.({});
-        id ? editMovie?.(newData) : setMovies?.(newData);
-      }, 2500);
+        id ? editMovie?.(newData) : addMovie?.(newData, route);
+      }, 1500);
     } catch (err) {
       setIsLoading(false);
     }
@@ -113,7 +118,7 @@ const MoviesAdd: React.FC = () => {
     <MainContainer>
       <Box>
         <Container>
-          <Title>Adicionar Filme</Title>
+          <Title>{`Add ${route === "movies" ? "Movie" : "TV Show"}`}</Title>
           <CloseIconContainer onClick={onCancel}>
             <CloseIcon />
           </CloseIconContainer>
@@ -174,7 +179,12 @@ const MoviesAdd: React.FC = () => {
                 error={errors.year?.message}
                 width={ww(165)}
               />
-              <SelectComponent data={categories} setData={setSelected}>
+              <SelectComponent
+                data={categories}
+                setData={setSelected}
+                initialValue={setectInitialValue}
+                width={ww(165)}
+              >
                 <ArrowDownIcon />
               </SelectComponent>
               <TextAreaComponent
@@ -208,4 +218,4 @@ const MoviesAdd: React.FC = () => {
   );
 };
 
-export default MoviesAdd;
+export default StreamingAdd;
