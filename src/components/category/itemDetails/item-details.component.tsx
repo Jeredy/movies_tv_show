@@ -119,7 +119,12 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ name, id }) => {
         )}
         <SubContainer>
           {isEditing ? (
-            <CloseIcon onClick={() => setIsEditing(false)} />
+            <CloseIcon
+              onClick={() => {
+                setIsEditing(false);
+                setValue(`${name}`, name);
+              }}
+            />
           ) : (
             <EditIcon onClick={() => setIsEditing(true)} />
           )}

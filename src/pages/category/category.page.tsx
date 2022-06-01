@@ -61,11 +61,11 @@ const CategoryPage: React.FC = () => {
   return (
     <Container>
       <Box>
-        <IconContainer onClick={() => setPageDetails?.(false)}>
-          <Icon />
-        </IconContainer>
-
         <TopContainer>
+          <IconContainer onClick={() => setPageDetails?.(false)}>
+            <Icon />
+          </IconContainer>
+
           <Title>Categoria</Title>
           {!isEditing && (
             <Button
@@ -94,7 +94,12 @@ const CategoryPage: React.FC = () => {
                   width={ww(150)}
                 />
 
-                <CloseIcon onClick={() => setIsEditing(false)} />
+                <CloseIcon
+                  onClick={() => {
+                    setIsEditing(false);
+                    setValue("category", "");
+                  }}
+                />
                 <CheckIcon
                   onClick={() => document.getElementById("submit")?.click()}
                 />

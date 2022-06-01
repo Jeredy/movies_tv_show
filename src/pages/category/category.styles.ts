@@ -65,7 +65,6 @@ export const Box = styled.div`
   width: ${ww(210)}px;
   max-height: ${ww(382)}px;
   padding: ${w(20, 17, 14, 17)};
-  position: relative;
 `;
 
 export const AnnotationContainer = styled.div`
@@ -84,9 +83,9 @@ export const IconContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: ${ww(6)}px;
-  right: ${ww(6)}px;
-
+  top: ${ww(-20)}px;
+  right: ${ww(-13)}px;
+  z-index: 3;
   &:hover {
     cursor: pointer;
   }
@@ -105,6 +104,7 @@ export const TopContainer = styled.div`
   margin: ${w(6, 0)};
   justify-content: space-between;
   align-items: center;
+  position: relative;
 
   button {
     width: 70px;
