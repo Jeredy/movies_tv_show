@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ww } from "../../styles/responsive";
 
 export const Container = styled.div`
   display: flex;
@@ -6,7 +7,7 @@ export const Container = styled.div`
   height: 100%;
   max-height: 100vh;
   overflow-y: scroll;
-  width: 200px;
+  width: ${ww(114)}px;
   align-items: center;
   justify-content: flex-start;
   background: #fff;
@@ -15,7 +16,7 @@ export const Container = styled.div`
   position: relative;
 
   &.active {
-    width: 50px;
+    width: ${ww(29)}px;
     transition: 0.3s ease-in-out;
 
     p {

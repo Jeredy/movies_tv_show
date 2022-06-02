@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ww } from "../../styles/responsive";
 import { CardStyleProps } from "../../types/card";
 
 export const Container = styled.div<CardStyleProps>`
@@ -6,7 +7,7 @@ export const Container = styled.div<CardStyleProps>`
   flex-direction: column;
 
   p {
-    margin-left: ${({ index }) => (index === 0 ? "20px" : "0px")};
+    margin-left: ${({ index }) => (index === 0 ? ww(11) : 0)}px;
   }
 
   &:hover {
@@ -18,14 +19,14 @@ export const Container = styled.div<CardStyleProps>`
 
 export const CardContainer = styled.div<CardStyleProps>`
   display: flex;
-  width: 150px;
-  height: 200px;
-  border-radius: 5px;
+  width: ${ww(86)}px;
+  height: ${ww(114)}px;
+  border-radius: ${ww(3)}px;
   box-shadow: 0 0.2rem 0.3rem #4c4c4c;
-  margin-right: 15px;
+  margin-right: ${ww(8.5)}px;
   transition: 0.2s ease-in-out;
-  margin-left: ${({ index }) => (index === 0 ? "20px" : "0px")};
-  margin-bottom: 10px;
+  margin-left: ${({ index }) => (index === 0 ? ww(11) : 0)}px;
+  margin-bottom: ${ww(5.7)}px;
 
   &:hover {
     transform: scale(1.05);
@@ -35,17 +36,17 @@ export const CardContainer = styled.div<CardStyleProps>`
 `;
 
 export const Image = styled.img`
-  width: 150px;
-  height: 200px;
+  width: ${ww(86)}px;
+  height: ${ww(114)}px;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: ${ww(3)}px;
 `;
 
 export const Text = styled.p`
-  font-size: 16px;
+  font-size: ${ww(9)}px;
   font-weight: 400;
-  margin-top: 6px;
-  max-width: 150px;
+  margin-top: ${ww(3)}px;
+  max-width: ${ww(85.5)}px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

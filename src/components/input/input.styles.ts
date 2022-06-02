@@ -8,7 +8,7 @@ import {
 } from "../../types/input";
 
 const inputContainerSize = css<InputContainerProps & IconContainerProps>`
-  height: ${ww(23)}px;
+  height: ${ww(20)}px;
   radius: ${ww(3)}px;
   width: ${({ width }) => width}px;
   font-size: ${ww(8)}px;
@@ -61,7 +61,7 @@ export const InputContainerSecondary = styled.div<
 `;
 
 export const Input = styled.input<InputContainerProps>`
-  height: ${ww(23)}px;
+  height: ${ww(20)}px;
   font-size: ${ww(8)}px;
   width: ${({ hasChildren, width }) =>
     hasChildren ? width! - ww(31) : width! - ww(12)}px;

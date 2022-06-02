@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
         display: none;
       }
     }
+    
     body {
       font-family: 'Inter', sans-serif;
       font-size: ${ww(9)}px;

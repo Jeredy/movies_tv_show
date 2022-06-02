@@ -13,6 +13,6 @@ export const Container = styled.div`
 export const Text = styled.p`
   font-weight: 400;
   color: #fff;
-  margin-left: 10px;
+  margin-left: ${ww(5)}px;
   font-size: ${ww(7)}px;
 `;

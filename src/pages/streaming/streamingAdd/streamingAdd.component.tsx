@@ -78,6 +78,7 @@ const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
         video: getValues("video"),
         duration: getValues("duration"),
         year: getValues("year"),
+        description: getValues("description"),
       },
       setError
     );
@@ -102,7 +103,7 @@ const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
         setIsLoading(false);
         setPageDetails?.({});
         setEditData?.({});
-        id ? editMovie?.(newData) : addMovie?.(newData, route);
+        id ? editMovie?.(newData, route) : addMovie?.(newData, route);
       }, 1500);
     } catch (err) {
       setIsLoading(false);

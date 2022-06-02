@@ -78,7 +78,7 @@ export const DetailContainer = styled.div<DetailContainerProps>`
 
 export const Title = styled.h1`
   color: #fff;
-  font-size: 40px;
+  font-size: ${ww(23)}px;
   font-weight: 700;
   text-transform: uppercase;
 `;
@@ -87,7 +87,7 @@ export const Details = styled.div`
   display: flex;
   flex-direction: space-around;
   width: 100%;
-  margin: 0.2rem 0rem 1rem 0rem;
+  margin: ${w(2, 0, 9, 0)};
 
   p {
     font-weight: 400;
@@ -96,7 +96,7 @@ export const Details = styled.div`
 
 export const About = styled.p`
   color: #dbdbdb;
-  font-size: 16px;
+  font-size: ${ww(9)}px;
   font-weight: 400;
   max-length: 200;
   width: ${ww(300)}px;
@@ -106,7 +106,7 @@ export const Text = styled.p`
   display: flex;
   margin-right: 1rem;
   color: #aeaeae;
-  font-size: 14px;
+  font-size: ${ww(8)}px;
   font-weight: 200;
   text-transform: uppercase;
 `;
@@ -115,20 +115,20 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 370px;
+  width: ${ww(210)}px;
   margin-top: 2rem;
 
   button {
-    width: 370px;
+    width: ${ww(210)}px;
     margin-bottom: ${ww(11)}px;
   }
 
   & :nth-child(2) {
-    width: 175px;
+    width: ${ww(100)}px;
   }
 
   & :nth-child(3) {
-    width: 175px;
+    width: ${ww(100)}px;
   }
 `;
 
@@ -152,8 +152,8 @@ export const CloseIconContainer = styled.div`
 `;
 
 export const CloseIcon = styled(Close).attrs({
-  width: w(14),
-  height: w(14),
+  width: ww(14),
+  height: ww(14),
 })`
   display: flex;
 `;

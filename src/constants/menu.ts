@@ -89,22 +89,4 @@ export const menuData = [
       },
     ],
   },
-  {
-    id: 4,
-    title: "Settings",
-    data: [
-      {
-        id: 40,
-        title: "My Account",
-        icon: SettingsIcon,
-        link: "another-page",
-      },
-      {
-        id: 42,
-        title: "Log out",
-        icon: LogoutIcon,
-        link: "another-page",
-      },
-    ],
-  },
 ];

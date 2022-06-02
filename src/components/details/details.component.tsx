@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "../button/button.components";
+import { useLocation } from "react-router-dom";
+
 import {
   Container,
   Details,
@@ -13,11 +15,14 @@ import {
 } from "./details.styles";
 
 const DetailsComponent: React.FC = () => {
+  const location = useLocation();
+  const currentRoute =
+    location.pathname.search("movies") > -1 ? "Movies" : "TV Shows";
+
   return (
     <Container className="menu">
       <TopMenu>
-        <Text>Movies</Text>
-        <IconFullScreen />
+        <Text>{currentRoute}</Text>
       </TopMenu>
       <SubContainer>
         <Title>Ullamco exercitation </Title>

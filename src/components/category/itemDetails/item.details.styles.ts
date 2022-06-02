@@ -62,15 +62,15 @@ export const TrashIcon = styled(Trash).attrs({
 `;
 
 export const CloseIcon = styled(Close).attrs({
-  width: w(11),
-  height: w(11),
+  width: ww(11),
+  height: ww(11),
 })`
   ${iconStyle}
 `;
 
 export const CheckIcon = styled(Check).attrs({
-  width: w(11),
-  height: w(11),
+  width: ww(11),
+  height: ww(11),
 })`
   ${iconStyle}
   margin-left: ${ww(4)}px;

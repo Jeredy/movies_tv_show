@@ -1,7 +1,7 @@
 import React from "react";
 
 import Menu from "../../components/menu/menu.components";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Container, Page, IconContainer, Icon } from "./home.styles";
 import DetailsPageModal from "../details-modal/details-modal.page";
@@ -37,6 +37,7 @@ const HomePage: React.FC = () => {
       <DetailsPageModal />
       <Page>
         <Routes>
+          <Route path="/" element={<Navigate to="/movies" replace />} />
           <Route path="movies" element={<StreamingMain />} />
           <Route path="tv_shows" element={<StreamingMain />} />
           <Route path="another-page" element={<AnotherPage />} />

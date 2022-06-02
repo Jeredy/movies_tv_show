@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as Arrow } from "../../assets/icons/chevron_big_right.svg";
+import { ww } from "../../styles/responsive";
 
 export const Container = styled.div`
   display: flex;
@@ -21,12 +22,12 @@ export const IconContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: #fff;
-  height: 25px;
-  width: 25px;
+  height: ${ww(14)}px;
+  width: ${ww(14)}px;
   border-radius: 50px;
   position: absolute;
-  left: 190px;
-  top: 100px;
+  left: ${ww(106)}px;
+  top: ${ww(57)}px;
   z-index: 9999;
   box-shadow: 0 -0.1rem 0.2rem #3b4ba244;
   transition: 0.1s ease-in-out;
@@ -38,7 +39,7 @@ export const IconContainer = styled.div`
 
   &.active {
     transition: 0.3s ease-in-out;
-    left: 40px;
+    left: ${ww(23)}px;
     transform: rotate(0deg);
   }
 `;

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { ReactComponent as Arrow } from "../../assets/icons/chevron_big_right.svg";
 import { ReactComponent as Expand } from "../../assets/icons/expand.svg";
+import { w, ww } from "../../styles/responsive";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 350px;
-  max-height: 350px;
+  min-height: ${ww(199.5)}px;
+  max-height: ${ww(199.5)}px;
   width: 100%;
   align-items: flex-start;
   justify-content: flex-start;
@@ -21,7 +22,7 @@ export const Container = styled.div`
     content: "";
     display: flex;
     width: 100%;
-    height: 350px;
+    height: ${ww(199.5)}px;
     position: absolute;
 
     background: rgb(2, 0, 36);
@@ -38,9 +39,9 @@ export const Container = styled.div`
 
 export const SubContainer = styled.div`
   display: flex;
-  max-width: 550px;
+  max-width: ${ww(313.5)}px;
   flex-direction: column;
-  padding-left: 2rem;
+  padding-left: ${ww(9)}px;
   z-index: 888;
 `;
 
@@ -49,7 +50,7 @@ export const TopMenu = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.8rem 1.6rem;
+  padding: ${w(13, 15)};
   z-index: 888;
 
   p {
@@ -59,7 +60,7 @@ export const TopMenu = styled.div`
 
 export const Title = styled.h1`
   color: #fff;
-  font-size: 40px;
+  font-size: ${ww(23)}px;
   font-weight: 700;
   text-transform: uppercase;
 `;
@@ -68,7 +69,7 @@ export const Details = styled.div`
   display: flex;
   flex-direction: space-around;
   width: 100%;
-  margin: 0.2rem 0rem 1rem 0rem;
+  margin: ${w(2, 0, 9, 0)};
 
   p {
     font-weight: 400;
@@ -77,7 +78,7 @@ export const Details = styled.div`
 
 export const About = styled.p`
   color: #fff;
-  font-size: 16px;
+  font-size: ${ww(9)}px;
   font-weight: 400;
   max-length: 200;
 `;
@@ -86,7 +87,7 @@ export const Text = styled.p`
   display: flex;
   margin-right: 1rem;
   color: #c7c7c7;
-  font-size: 14px;
+  font-size: ${ww(8)}px;
   font-weight: 200;
   text-transform: uppercase;
 `;
@@ -94,11 +95,11 @@ export const Text = styled.p`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 370px;
-  margin-top: 2rem;
+  width: ${ww(210)}px;
+  margin-top: ${ww(18)}px;
 
   button {
-    width: 170px;
+    width: ${ww(97)}px;
   }
 `;
 

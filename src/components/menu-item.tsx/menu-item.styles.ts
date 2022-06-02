@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { w, ww } from "../../styles/responsive";
 
 import { MenuItemProps } from "../../types/menu";
 
@@ -11,16 +12,16 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: 14px;
+  font-size: ${ww(8)}px;
   color: #7c7c7c;
   font-weight: 500;
 `;
 
 export const Text = styled.p<MenuItemProps>`
-  font-size: 14px;
+  font-size: ${ww(8)}px;
   color: ${({ selected }) => (selected ? "#069A8E" : "#4b4b4b")};
   font-weight: 500;
-  margin-left: 16px;
+  margin-left: ${ww(9)}px;
   text-align: flex-start;
 
   &:hover {
@@ -31,18 +32,18 @@ export const Text = styled.p<MenuItemProps>`
 export const TitleContainer = styled.div<MenuItemProps>`
   display: flex;
   align-items: center;
-  height: 40px;
+  height: ${ww(23)}px;
   width: 100%;
-  padding: 0px 20px;
+  padding: ${w(0, 11)};
 `;
 
 export const ItemContainer = styled.div<MenuItemProps>`
   display: flex;
   align-items: center;
-  height: 40px;
+  height: ${ww(23)}px;
   width: 100%;
   background: ${({ selected }) => (selected ? "#a1e3d833" : "#fff")};
-  padding-left: 30px;
+  padding-left: ${ww(17)}px;
 
   &:hover {
     cursor: pointer;
@@ -54,5 +55,5 @@ export const Divisor = styled.div`
   height: 1px;
   width: 100%;
   border-bottom: 1px solid #e5e5e5;
-  padding-top: 20px;
+  padding-top: ${ww(11)}px;
 `;

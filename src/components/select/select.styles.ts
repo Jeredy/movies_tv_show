@@ -7,13 +7,9 @@ import {
   ShowOptionsProps,
 } from "../../types/select";
 
-//small: 81
-//medium: 131
-//large: 164
-
 const selectContainerSize = css<SelectContainerProps & IconContainerProps>`
   display: flex;
-  height: ${ww(23)}px;
+  height: ${ww(20)}px;
   radius: ${ww(3)}px;
   width: ${({ width }) => width}px;
   font-size: ${ww(12)}px;
@@ -34,7 +30,7 @@ const selectContainerSize = css<SelectContainerProps & IconContainerProps>`
 const selectStyle = css<SelectContainerProps>`
   display: flex;
   align-items: center;
-  height: ${ww(23)}px;
+  height: ${ww(20)}px;
 `;
 
 export const Container = styled.div`
@@ -110,7 +106,6 @@ export const ShowOptions = styled(Select)`
   }
 `;
 
-//PAGE ITEM
 export const Divisor = styled.div`
   width: 100%;
   border-bottom: 1px solid #a1e3d866;

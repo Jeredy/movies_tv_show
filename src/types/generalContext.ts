@@ -11,7 +11,7 @@ export interface PropsContext {
   setEditData?: (editData: any) => void;
   addMovie?: (movies: StreamingModel, route: string) => void;
   deleteMovie?: (id: number) => void;
-  editMovie?: (data: StreamingModel) => void;
+  editMovie?: (movies: StreamingModel, route: string) => void;
   addCategory?: (category: CategoryModel) => void;
   editCategory?: (category: CategoryModel) => void;
   deleteCategory?: (id: string) => void;

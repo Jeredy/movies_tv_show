@@ -5,7 +5,7 @@ export const tvShowData = [
     image:
       "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg",
     video: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "96074",
     description:
@@ -17,7 +17,7 @@ export const tvShowData = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScXbfpmmyei-6Y4TQA9WrrpF-1KZeGAPdrc7AoHzVPVvhLHjpH4zzAzh75_hdZbC5wOrc&usqp=CAU",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "96074",
     description:
@@ -29,7 +29,7 @@ export const tvShowData = [
     image:
       "https://i.pinimg.com/564x/35/53/d5/3553d526b964b04f4bbd2910ba7269b5.jpg",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "96074",
     description:
@@ -41,7 +41,7 @@ export const tvShowData = [
     image:
       "https://i.pinimg.com/474x/73/ec/ab/73ecab3ff586d87a2cfacb9862ba629f.jpg",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "96074",
     description:
@@ -53,7 +53,7 @@ export const tvShowData = [
     image:
       "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "96074",
     description:
@@ -65,7 +65,7 @@ export const tvShowData = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScXbfpmmyei-6Y4TQA9WrrpF-1KZeGAPdrc7AoHzVPVvhLHjpH4zzAzh75_hdZbC5wOrc&usqp=CAU",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "96074",
     description:
@@ -77,7 +77,7 @@ export const tvShowData = [
     image:
       "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "96074",
     description:
@@ -89,7 +89,7 @@ export const tvShowData = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScXbfpmmyei-6Y4TQA9WrrpF-1KZeGAPdrc7AoHzVPVvhLHjpH4zzAzh75_hdZbC5wOrc&usqp=CAU",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "96074",
     description:
@@ -102,7 +102,7 @@ export const tvShowData = [
     image:
       "https://i.pinimg.com/564x/bb/71/a5/bb71a51ba2cd06cac2662099a6411e19.jpg",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "23452",
     description:
@@ -114,7 +114,7 @@ export const tvShowData = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScXbfpmmyei-6Y4TQA9WrrpF-1KZeGAPdrc7AoHzVPVvhLHjpH4zzAzh75_hdZbC5wOrc&usqp=CAU",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "23452",
     description:
@@ -126,7 +126,7 @@ export const tvShowData = [
     image:
       "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "23452",
     description:
@@ -138,7 +138,7 @@ export const tvShowData = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScXbfpmmyei-6Y4TQA9WrrpF-1KZeGAPdrc7AoHzVPVvhLHjpH4zzAzh75_hdZbC5wOrc&usqp=CAU",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "23452",
     description:
@@ -150,7 +150,7 @@ export const tvShowData = [
     image:
       "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "23452",
     description:
@@ -162,7 +162,7 @@ export const tvShowData = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScXbfpmmyei-6Y4TQA9WrrpF-1KZeGAPdrc7AoHzVPVvhLHjpH4zzAzh75_hdZbC5wOrc&usqp=CAU",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "23452",
     description:
@@ -174,7 +174,7 @@ export const tvShowData = [
     image:
       "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "23452",
     description:
@@ -186,7 +186,7 @@ export const tvShowData = [
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScXbfpmmyei-6Y4TQA9WrrpF-1KZeGAPdrc7AoHzVPVvhLHjpH4zzAzh75_hdZbC5wOrc&usqp=CAU",
     video: "",
-    duration: "2h",
+    duration: "4 hours",
     year: "2012",
     category: "23452",
     description:

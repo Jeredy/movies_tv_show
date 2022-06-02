@@ -2,7 +2,6 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { menuData } from "../../constants/menu";
-import { AuthContext } from "../../context/authContext";
 import { GeneralContext } from "../../context/generalContext";
 import {
   Container,
@@ -15,7 +14,6 @@ import {
 
 const MenuItem: React.FC = () => {
   const [selected, setSelected] = React.useState(0);
-  const { setAdmin, setAuthenticated } = React.useContext(AuthContext);
   const { setPageDetails } = React.useContext(GeneralContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,13 +33,6 @@ const MenuItem: React.FC = () => {
       });
     });
   }, [currentRoute]);
-
-  const logout = (id: number) => {
-    if (id === 42) {
-      setAuthenticated?.(false);
-      setAdmin?.(null);
-    }
-  };
 
   const showModalPage = (title: string) => {
     switch (title.toLowerCase()) {
@@ -83,7 +74,6 @@ const MenuItem: React.FC = () => {
                 subItem.link
                   ? () => {
                       setSelected(subItem.id);
-                      logout(subItem.id);
                       showModalPage(subItem.title);
                       navigate(subItem.link);
                     }

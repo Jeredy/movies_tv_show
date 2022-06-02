@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ww } from "../../../styles/responsive";
 
 export const Container = styled.div`
   display: flex;
@@ -12,9 +13,9 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.p`
-  margin-bottom: 55px;
-  font-size: 36px;
-  font-weight: 500px;
+  margin-bottom: ${ww(31)}px;
+  font-size: ${ww(20)}px;
+  font-weight: ${ww(285)}px;
   color: #4b4b4b;
   margin-right: auto;
 `;

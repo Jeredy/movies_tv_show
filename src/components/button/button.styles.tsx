@@ -8,7 +8,7 @@ const buttonStyle = css`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: ${ww(23)}px;
+  height: ${ww(20)}px;
   z-index: 2;
 `;
 

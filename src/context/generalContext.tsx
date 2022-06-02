@@ -80,9 +80,10 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
         value: moviesAfterDeleted,
       };
     case Types.EDIT_MOVIE:
-      const moviesAfterEdited =
-        payload.route.search("movies") > -1 ? state.movies : state.tvShows;
+      console.log("payload:", payload);
 
+      const moviesAfterEdited = state.movies;
+      // payload.route.search("movies") > -1 ? state.movies : state.tvShows;
       if (
         moviesAfterEdited.findIndex(
           (streaming) => streaming.id === payload.id
@@ -197,10 +198,13 @@ const GeneralProvider = (props: LayoutProps) => {
     });
   };
 
-  const editMovie = (data: StreamingModel) => {
+  const editMovie = (movie: StreamingModel, route: string) => {
     dispatch({
       type: Types.EDIT_MOVIE,
-      payload: data,
+      payload: {
+        movie,
+        route,
+      },
     });
   };
 

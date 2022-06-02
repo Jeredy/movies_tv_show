@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as ArrowDown } from "../../../assets/icons/chevron_big_right.svg";
 import { ReactComponent as Close } from "../../../assets/icons/close.svg";
 
-import { w, ww } from "../../../styles/responsive";
+import { ww } from "../../../styles/responsive";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -24,50 +24,50 @@ export const Box = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 360px;
+  width: ${ww(205)}px;
   background-color: #fff;
-  padding: 27px;
-  border-radius: 20px;
+  padding: ${ww(15)}px;
+  border-radius: ${ww(11)}px;
   position: absolute;
 `;
 
 export const LogoContainer = styled.div`
   display: flex;
-  margin-bottom: 43px;
+  margin-bottom: ${ww(24)}px;
 `;
 
 export const Logo = styled.img`
-  width: 289px;
-  height: 97px;
+  width: ${ww(165)}px;
+  height: ${ww(55)}px;
 `;
 
 export const InputLink = styled(Link)`
-  margin-top: 23px;
+  margin-top: ${ww(13)}px;
   text-transform: capitalize;
   color: #3b4ba2;
 `;
 
 export const MainLabel = styled.p`
   font-weight: 700;
-  line-height: 19px;
+  line-height: ${ww(11)}px;
   color: #4b4b4b;
-  margin-bottom: 23px;
+  margin-bottom: ${ww(13)}px;
   margin-right: auto;
 `;
 
 export const SubLabel = styled.p`
-  font-size: 14px;
+  font-size: ${ww(8)}px;
   font-weight: 400;
   text-align: left;
   color: #4b4b4b;
-  margin-bottom: 10px;
+  margin-bottom: ${ww(6)}px;
   margin-right: auto;
 `;
 
 export const TextError = styled.p`
-  font-size: 11px;
+  font-size: ${ww(6)}px;
   color: #f31;
-  margin-bottom: 10px;
+  margin-bottom: ${ww(6)}px;
 `;
 
 export const Container = styled.div`
@@ -78,7 +78,9 @@ export const Container = styled.div`
 `;
 
 export const InputContainer = styled.div`
-  margin-bottom: 29px;
+  margin-bottom: ${ww(11)}px;
+  overflow-y: scroll;
+  max-height: ${ww(252)}px;
 `;
 
 export const Form = styled.form``;
@@ -87,7 +89,7 @@ export const Title = styled.p`
   font-size: ${ww(15)}px;
   color: #005555;
   font-weight: 700;
-  margin-bottom: ${ww(15)}px;
+  margin-bottom: ${ww(6)}px;
   align-self: flex-start;
 `;
 
@@ -112,15 +114,15 @@ export const CloseIconContainer = styled.div`
 `;
 
 export const CloseIcon = styled(Close).attrs({
-  width: w(14),
-  height: w(14),
+  width: ww(14),
+  height: ww(14),
 })`
   display: flex;
 `;
 
 export const ArrowDownIcon = styled(ArrowDown).attrs({
-  width: w(14),
-  height: w(14),
+  width: ww(14),
+  height: ww(14),
 })`
   transform: rotate(90deg);
 `;
