@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { ReactComponent as Arrow } from "../../assets/icons/chevron_big_right.svg";
-import { ReactComponent as Expand } from "../../assets/icons/expand.svg";
 import { w, ww } from "../../styles/responsive";
+import { BannerContainerStyles } from "../../types/banner";
 
-export const Container = styled.div`
+export const Container = styled.div<BannerContainerStyles>`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -12,7 +12,7 @@ export const Container = styled.div`
   width: 100%;
   align-items: flex-start;
   justify-content: flex-start;
-  background-image: url(https://i.pinimg.com/originals/3b/97/b0/3b97b0ab8ef4d7de00ee4a1852b32d8a.jpg);
+  background-image: url(${({ image }) => image});
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -39,9 +39,9 @@ export const Container = styled.div`
 
 export const SubContainer = styled.div`
   display: flex;
-  max-width: ${ww(313.5)}px;
+  max-width: ${ww(400.5)}px;
   flex-direction: column;
-  padding-left: ${ww(9)}px;
+  padding-left: ${ww(14)}px;
   z-index: 888;
 `;
 
@@ -81,6 +81,7 @@ export const About = styled.p`
   font-size: ${ww(9)}px;
   font-weight: 400;
   max-length: 200;
+  max-width: ${ww(313.5)}px;
 `;
 
 export const Text = styled.p`
@@ -105,12 +106,4 @@ export const ButtonContainer = styled.div`
 
 export const Icon = styled(Arrow)`
   transform: rotate(180deg);
-`;
-
-export const IconFullScreen = styled(Expand)`
-  display: flex;
-
-  &:hover {
-    cursor: pointer;
-  }
 `;

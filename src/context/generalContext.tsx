@@ -80,21 +80,20 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
         value: moviesAfterDeleted,
       };
     case Types.EDIT_MOVIE:
-      console.log("payload:", payload);
+      const moviesAfterEdited =
+        payload.route.search("movies") > -1 ? state.movies : state.tvShows;
 
-      const moviesAfterEdited = state.movies;
-      // payload.route.search("movies") > -1 ? state.movies : state.tvShows;
       if (
         moviesAfterEdited.findIndex(
-          (streaming) => streaming.id === payload.id
+          (streaming) => streaming.id === payload.movie.id
         ) > -1
       ) {
         moviesAfterEdited.splice(
           moviesAfterEdited.findIndex(
-            (streaming) => streaming.id === payload.id
+            (streaming) => streaming.id === payload.movie.id
           ),
           1,
-          payload
+          payload.movie
         );
       }
 
@@ -104,7 +103,7 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
       };
     case Types.ADD_CATEGORY:
       const categoriesAfterAdded = state.categories;
-
+      console.log(payload);
       if (
         categoriesAfterAdded.findIndex(
           (category) => category.title === payload.title
@@ -125,7 +124,6 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
           (category) => category.id === payload.id
         ) > -1
       ) {
-        console.log(payload.title);
         categoriesAfterEdited.splice(
           categoriesAfterEdited.findIndex(
             (category) => category.id === payload.id

@@ -2,23 +2,13 @@ import React from "react";
 
 import { InputProps, InputStyle } from "../../types/input";
 
-import {
-  Container,
-  InputContainerPrimary,
-  InputContainerSecondary,
-  IconContainer,
-  Input,
-  TextError,
-  Label,
-} from "./input.styles";
-import mask from "./mask";
+import { Container, InputContainer, Input, TextError } from "./input.styles";
 
 const InputComponent: React.FC<InputProps & InputStyle> = ({
   name,
   placeholder,
   type,
   children,
-  iconStart = false,
   inputStyle,
   register,
   error,
@@ -26,7 +16,6 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
   maxLength,
   required = false,
   width,
-  isSecondary,
   value,
 }) => {
   const [activeInput, setActiveInput] = React.useState("");
@@ -34,22 +23,13 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
   const activeElement = (data: string) => {
     setActiveInput(data);
   };
-  const InputContainer = isSecondary
-    ? InputContainerSecondary
-    : InputContainerPrimary;
 
   return (
     <Container>
-      {isSecondary && (
-        <Label showLabel={!!innerValue.length || !!value?.length}>
-          {placeholder}
-        </Label>
-      )}
       <InputContainer
         hasChildren={!!children}
         isFocus={activeInput === name}
         hasError={!!error}
-        iconStart={iconStart}
         style={{ ...inputStyle }}
         width={width}
       >
@@ -66,8 +46,7 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
           }}
           {...register?.(name, {
             onChange: (e: any) => (
-              (e.target.value = `${mask(e.target.value, type)}`),
-              setInnerValue(e.target.value)
+              (e.target.value = e.target.value), setInnerValue(e.target.value)
             ),
             value: value,
             required: required,
@@ -75,7 +54,6 @@ const InputComponent: React.FC<InputProps & InputStyle> = ({
           onBlur={() => activeElement("")}
           maxLength={maxLength}
         />
-        <IconContainer iconStart={iconStart}>{children}</IconContainer>
       </InputContainer>
       {error && <TextError>* {error}</TextError>}
     </Container>

@@ -16,7 +16,7 @@ export const Container = styled.div`
   position: relative;
 
   &.active {
-    width: ${ww(29)}px;
+    width: ${ww(30)}px;
     transition: 0.3s ease-in-out;
 
     p {

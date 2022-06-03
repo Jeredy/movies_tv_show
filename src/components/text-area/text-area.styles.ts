@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ww } from "../../styles/responsive";
 
-import { IconContainerProps, InputContainerProps } from "../../types/input";
+import { InputContainerProps } from "../../types/input";
 
 export const Container = styled.div`
   display: flex;
@@ -11,9 +11,7 @@ export const Container = styled.div`
   margin-bottom: ${ww(7)}px;
 `;
 
-export const TextAreaContainer = styled.div<
-  InputContainerProps & IconContainerProps
->`
+export const TextAreaContainer = styled.div<InputContainerProps>`
   height: ${ww(57)}px;
   max-height: ${ww(57)}px;
   radius: ${ww(3)}px;

@@ -53,6 +53,7 @@ const CategoryPage: React.FC = () => {
         title: getValues("category")!,
         value: getValues("category")!,
       });
+      setValue("category", "");
     } catch (err) {
       //
     }

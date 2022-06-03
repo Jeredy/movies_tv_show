@@ -14,7 +14,6 @@ const TextAreaComponent: React.FC<InputProps & InputStyle> = ({
   placeholder,
   type,
   children,
-  iconStart = false,
   inputStyle,
   register,
   error,
@@ -33,7 +32,6 @@ const TextAreaComponent: React.FC<InputProps & InputStyle> = ({
         hasChildren={!!children}
         isFocus={activeInput === name}
         hasError={!!error}
-        iconStart={iconStart}
         style={{ ...inputStyle }}
       >
         <TextArea

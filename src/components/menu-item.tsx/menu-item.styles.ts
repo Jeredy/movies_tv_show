@@ -21,7 +21,7 @@ export const Text = styled.p<MenuItemProps>`
   font-size: ${ww(8)}px;
   color: ${({ selected }) => (selected ? "#069A8E" : "#4b4b4b")};
   font-weight: 500;
-  margin-left: ${ww(9)}px;
+  margin-left: ${ww(4)}px;
   text-align: flex-start;
 
   &:hover {
@@ -34,7 +34,7 @@ export const TitleContainer = styled.div<MenuItemProps>`
   align-items: center;
   height: ${ww(23)}px;
   width: 100%;
-  padding: ${w(0, 11)};
+  padding: ${w(0, 10)};
 `;
 
 export const ItemContainer = styled.div<MenuItemProps>`
@@ -43,7 +43,7 @@ export const ItemContainer = styled.div<MenuItemProps>`
   height: ${ww(23)}px;
   width: 100%;
   background: ${({ selected }) => (selected ? "#a1e3d833" : "#fff")};
-  padding-left: ${ww(17)}px;
+  padding-left: ${ww(9)}px;
 
   &:hover {
     cursor: pointer;

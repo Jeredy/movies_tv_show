@@ -121,8 +121,8 @@ export const CloseIcon = styled(Close).attrs({
 `;
 
 export const ArrowDownIcon = styled(ArrowDown).attrs({
-  width: ww(14),
-  height: ww(14),
+  width: ww(11),
+  height: ww(12),
 })`
   transform: rotate(90deg);
 `;

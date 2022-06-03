@@ -1,44 +1,28 @@
 export interface InputProps {
-	name: string;
-	type: string;
-	placeholder: string;
-	children?: React.ReactChild;
-	iconStart?: boolean;
-	register?: any;
-	error?: string | undefined;
-	onFocus?: any;
-	maxLength?: number;
-	value?: any;
-	required?: boolean;
-	searchFilter?: (search: any) => void;
+  name: string;
+  type: string;
+  placeholder: string;
+  children?: React.ReactChild;
+  register?: any;
+  error?: string | undefined;
+  onFocus?: any;
+  maxLength?: number;
+  value?: any;
+  required?: boolean;
 }
 
 export interface InputContainerProps {
-	hasChildren: boolean;
-	isFocus?: unknown;
-	hasError: boolean;
-	width?: number;
-}
-
-export interface IconContainerProps {
-	iconStart: boolean;
+  hasChildren: boolean;
+  isFocus?: unknown;
+  hasError: boolean;
+  width?: number;
 }
 
 export interface InputStyle {
-	inputStyle?: React.CSSProperties;
-	width?: number;
-	isSecondary?: boolean;
-}
-
-export interface InputLabel {
-	showLabel?: boolean;
-}
-
-export interface ModalityInput {
-	modality?: string;
-	minPrice?: string;
+  inputStyle?: React.CSSProperties;
+  width?: number;
 }
 
 export interface CategoryInput {
-	category?: string;
+  category?: string;
 }

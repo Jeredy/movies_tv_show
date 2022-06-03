@@ -193,3 +193,16 @@ export const moviesData = [
       "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
   },
 ];
+
+export const bannerDataMovies = {
+  id: 34572,
+  name: "Marvel Studios' Avengers",
+  image:
+    "https://i.pinimg.com/originals/3b/97/b0/3b97b0ab8ef4d7de00ee4a1852b32d8a.jpg",
+  video: "",
+  duration: "2 hours",
+  year: "2012",
+  category: "123463",
+  description:
+    "Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu. Occaecat incididunt qui consectetur in esse eu commodo aute. Fugiat sint do elit exercitation id. Est eu elit Lorem eu.",
+};

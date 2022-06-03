@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import DetailsComponent from "../../../components/details/details.component";
+import DetailsComponent from "../../../components/banner/banner.component";
 import { GeneralContext } from "../../../context/generalContext";
 import { categoryData } from "../../../mockup/category";
 import { MoviesProps } from "../../../types/streaming";

@@ -18,8 +18,12 @@ export const Title = styled.p`
 export const CardContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
+  min-width: 100%;
   min-height: calc(100% + ${ww(17)}px);
   max-width: calc(100vw - ${ww(57)}px);
   overflow-x: scroll;
+
+  &.active {
+    min-width: calc(100% + ${ww(30)}px);
+  }
 `;

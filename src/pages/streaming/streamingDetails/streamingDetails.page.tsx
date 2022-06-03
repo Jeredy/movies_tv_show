@@ -56,6 +56,7 @@ const StreamingDetailPage: React.FC = () => {
     setTimeout(() => {
       setPageDetails?.({});
       setIsLoading(false);
+      setShowCautionAlert(false);
     }, 1500);
   };
 

@@ -7,7 +7,7 @@ const ListComponent: React.FC<MoviesProps> = ({ title, data }) => {
   return (
     <Container>
       <Title>{title}</Title>
-      <CardContainer>
+      <CardContainer className={"menu"}>
         {data?.map((item: any, index: number) => (
           <CardComponent
             id={item?.id}

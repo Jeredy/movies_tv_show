@@ -40,19 +40,16 @@ const MenuItem: React.FC = () => {
         return setPageDetails?.({
           route: "movies",
           action: "addStreaming",
-          id: 0,
         });
       case "add tv shows":
         return setPageDetails?.({
           route: "tv_shows",
           action: "addStreaming",
-          id: 0,
         });
       case "categories":
         return setPageDetails?.({
           route: "categories",
           action: "categoryDetail",
-          id: 0,
         });
       default:
         return;

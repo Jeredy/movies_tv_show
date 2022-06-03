@@ -58,12 +58,6 @@ export const Select = styled.div<SelectContainerProps>`
     hasChildren ? width! - 55 : width}px; //edit
 `;
 
-export const SelectTooSmall = styled.div<SelectContainerProps>`
-  ${selectStyle}
-  height:${ww(17)}px;
-  width: ${({ hasChildren }) => (hasChildren ? ww(34) : ww(51))}px; //edit
-`;
-
 export const IconContainer = styled.div<IconContainerProps>`
   position: absolute;
   display: flex;
@@ -85,11 +79,11 @@ export const Text = styled.p`
 export const ShowContainer = styled(SelectContainer)<ShowOptionsProps>`
   position: absolute;
   flex-direction: column;
-  top: ${ww(24)}px;
+  top: ${ww(21)}px;
   left: 0px;
   margin: 0px;
   padding: 0px;
-  height: ${({ qtdeItems }) => ww(24) * qtdeItems}px;
+  height: ${({ qtdeItems }) => ww(20) * qtdeItems}px;
   width: ${({ width }) => width}px;
   overflow-y: scroll;
   box-shadow: 0 0.2rem 0.3rem #00000033;

@@ -22,7 +22,6 @@ const SelectComponent: React.FC<SelectProps & SelectStyle> = ({
   width,
 }) => {
   const [show, setShow] = React.useState(false);
-  const [checked, setChecked] = React.useState([""]);
   const [selected, setSelected] = React.useState({
     title: data?.[0].title,
     value: data?.[0].value,

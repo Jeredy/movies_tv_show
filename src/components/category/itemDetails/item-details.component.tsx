@@ -79,6 +79,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ name, id }) => {
 
     if (canDelete.answer) {
       deleteCategory?.(id);
+      setShowCautionAlert(false);
     } else {
       setIsEmpty(true);
     }
@@ -139,7 +140,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ name, id }) => {
         <Alert
           text={
             isEmpty
-              ? `Erro ao deletar deletada, existem streamings relacionados a essa categoria:${name}`
+              ? `Erro ao deletar, existem streamings relacionados a essa categoria:${name}`
               : `Você está prestes a deletar essa categoria:${name}`
           }
           buttonText={`${isEmpty ? "Entendi" : "Deletar"}`}

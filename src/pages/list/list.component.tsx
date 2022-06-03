@@ -4,7 +4,7 @@ import { Container } from "./list.styles";
 
 const ListPage: React.FC<any> = ({ data }) => {
   return (
-    <Container>
+    <Container className="menu">
       {data?.map((element: any, index: number) => (
         <ListComponent title={element.title} data={element.data} />
       ))}

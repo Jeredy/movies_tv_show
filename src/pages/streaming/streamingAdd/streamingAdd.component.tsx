@@ -26,7 +26,6 @@ import { validate } from "./validateInput";
 import { StreamingAddProps } from "../../../types/streaming";
 
 const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
-  const [isLoading, setIsLoading] = React.useState(false);
   const {
     movies,
     tvShows,
@@ -39,6 +38,7 @@ const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
   } = React.useContext(GeneralContext);
   const [selected, setSelected] = React.useState<string>();
   const [setectInitialValue, setSelectInitialValue] = React.useState<number>();
+  const [isLoading, setIsLoading] = React.useState(false);
   const { id } = editData;
 
   const {
@@ -66,7 +66,7 @@ const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
         return;
       }
     });
-  });
+  }, [movies, tvShows, id]);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -99,11 +99,11 @@ const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
         description: getValues("description")!,
       };
 
+      id ? editMovie?.(newData, route) : addMovie?.(newData, route);
       setTimeout(() => {
         setIsLoading(false);
         setPageDetails?.({});
         setEditData?.({});
-        id ? editMovie?.(newData, route) : addMovie?.(newData, route);
       }, 1500);
     } catch (err) {
       setIsLoading(false);
@@ -119,7 +119,9 @@ const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
     <MainContainer>
       <Box>
         <Container>
-          <Title>{`Add ${route === "movies" ? "Movie" : "TV Show"}`}</Title>
+          <Title>{`${id ? "Editar" : "Adicionar"} ${
+            route === "movies" ? "Filme" : "Série"
+          }`}</Title>
           <CloseIconContainer onClick={onCancel}>
             <CloseIcon />
           </CloseIconContainer>
@@ -136,6 +138,14 @@ const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
                 error={errors.name?.message}
                 width={ww(165)}
               />
+              <SelectComponent
+                data={categories}
+                setData={setSelected}
+                initialValue={setectInitialValue}
+                width={ww(165)}
+              >
+                <ArrowDownIcon />
+              </SelectComponent>
               <InputComponent
                 register={register}
                 required={true}
@@ -180,14 +190,6 @@ const StreamingAdd: React.FC<StreamingAddProps> = ({ route }) => {
                 error={errors.year?.message}
                 width={ww(165)}
               />
-              <SelectComponent
-                data={categories}
-                setData={setSelected}
-                initialValue={setectInitialValue}
-                width={ww(165)}
-              >
-                <ArrowDownIcon />
-              </SelectComponent>
               <TextAreaComponent
                 register={register}
                 name="description"
