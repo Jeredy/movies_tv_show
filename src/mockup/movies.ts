@@ -4,7 +4,7 @@ export const moviesData = [
     name: "Black Widow 2",
     image:
       "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg",
-    video: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+    video: "https://www.youtube.com/watch?v=Fp9pNPdNwjI",
     duration: "2 hours",
     year: "2012",
     category: "1234523",

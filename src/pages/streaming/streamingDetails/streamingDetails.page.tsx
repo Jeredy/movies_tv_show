@@ -51,7 +51,7 @@ const StreamingDetailPage: React.FC = () => {
 
   const deleteData = (id: number) => {
     setIsLoading(true);
-    deleteMovie?.(id);
+    deleteMovie?.(id, currentPage.search("movies") > -1 ? "movies" : "tvShows");
 
     setTimeout(() => {
       setPageDetails?.({});

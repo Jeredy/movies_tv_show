@@ -66,11 +66,14 @@ const GeneralReducer = (state: PropsState, action: PropsAction) => {
         payload.route.search("movies") > -1 ? state.movies : state.tvShows;
 
       if (
-        moviesAfterDeleted.findIndex((streaming) => streaming.id === payload) >
-        -1
+        moviesAfterDeleted.findIndex(
+          (streaming) => streaming.id === payload.id
+        ) > -1
       ) {
         moviesAfterDeleted.splice(
-          moviesAfterDeleted.findIndex((streaming) => streaming.id === payload),
+          moviesAfterDeleted.findIndex(
+            (streaming) => streaming.id === payload.id
+          ),
           1
         );
       }
@@ -189,10 +192,13 @@ const GeneralProvider = (props: LayoutProps) => {
     });
   };
 
-  const deleteMovie = (id: number) => {
+  const deleteMovie = (id: number, route: string) => {
     dispatch({
       type: Types.DELETE_MOVIE,
-      payload: id,
+      payload: {
+        id,
+        route,
+      },
     });
   };
 
